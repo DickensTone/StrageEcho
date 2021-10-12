@@ -1,0 +1,4 @@
+# Project exclude paths
+/configcenter/target/
+/server/target/
+/target/
