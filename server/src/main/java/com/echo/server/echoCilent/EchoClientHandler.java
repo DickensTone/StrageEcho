@@ -17,7 +17,7 @@ public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!",
+        ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n",
                 CharsetUtil.UTF_8));
     }
 
@@ -25,6 +25,7 @@ public class EchoClientHandler
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
         System.out.println(
                 "Client received: " + in.toString(CharsetUtil.UTF_8));
+
     }
 
     @Override

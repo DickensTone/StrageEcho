@@ -10,6 +10,7 @@
     <modules>
         <module>server</module>
         <module>ConfigCenter</module>
+        <module>IO</module>
     </modules>
     <packaging>pom</packaging>
 

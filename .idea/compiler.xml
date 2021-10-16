@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="configcenter" />
         <module name="server" />
+        <module name="IO" />
       </profile>
     </annotationProcessing>
   </component>
