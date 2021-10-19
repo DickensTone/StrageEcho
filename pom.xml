@@ -11,6 +11,7 @@
         <module>server</module>
         <module>ConfigCenter</module>
         <module>IO</module>
+        <module>client</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -18,7 +19,6 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-transport</artifactId>
-            <version>4.1.59.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,6 +74,10 @@
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+        </dependency>
 
     </dependencies>
     <dependencyManagement>
@@ -116,6 +120,21 @@
                 <artifactId>nacos-client</artifactId>
                 <version>${nacos-client.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-handler</artifactId>
+                <version>${netty-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport</artifactId>
+                <version>${netty-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport-sctp</artifactId>
+                <version>${netty-version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -123,7 +142,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot-dependencies.version>2.1.17.RELEASE</spring-boot-dependencies.version>
-        <revision>0.0.1.QUICK</revision>
         <tomcat-embed-jasper.version>9.0.40</tomcat-embed-jasper.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <reflections.version>0.9.11</reflections.version>
@@ -131,6 +149,7 @@
         <mockito-core.version>3.8.0</mockito-core.version>
         <nacos-spring-context.version>0.2.2-RC1</nacos-spring-context.version>
         <nacos-client.version>2.0.3</nacos-client.version>
+        <netty-version>4.1.52.Final</netty-version>
     </properties>
 
     <build>

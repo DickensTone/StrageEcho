@@ -1,4 +1,5 @@
-package com.echo.server.echoCilent;
+package com.echo.client.echoCilent;
+
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
