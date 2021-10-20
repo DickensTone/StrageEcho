@@ -22,9 +22,17 @@
         <version>1.0.1FST</version>
     </parent>
 
-    <groupId>org.example</groupId>
     <artifactId>server</artifactId>
     <version>1.0.1FST</version>
-
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
