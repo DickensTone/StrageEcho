@@ -94,6 +94,11 @@
                 <artifactId>netty-transport-sctp</artifactId>
                 <version>${netty-version}</version>
             </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -109,6 +114,7 @@
         <nacos-spring-context.version>0.2.2-RC1</nacos-spring-context.version>
         <nacos-client.version>2.0.3</nacos-client.version>
         <netty-version>4.1.52.Final</netty-version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <build>

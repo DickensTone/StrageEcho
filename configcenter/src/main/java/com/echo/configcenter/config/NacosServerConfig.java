@@ -1,7 +1,7 @@
 package com.echo.configcenter.config;
 
 public enum NacosServerConfig {
-    localhost("loacalhost", 8848, 5000);
+    localhost("localhost", 8848, 5000);
 
     NacosServerConfig(String addr, int port, int timeout) {
         this.addr = addr;
