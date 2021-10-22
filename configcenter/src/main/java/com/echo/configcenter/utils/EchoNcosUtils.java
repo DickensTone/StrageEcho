@@ -13,7 +13,6 @@ public class EchoNcosUtils {
         properties.put("serverAddr", nacosServerConfig.addr());
         return NacosFactory.createConfigService(properties);
 
-
     }
 
 }
