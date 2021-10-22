@@ -38,7 +38,6 @@ public class NacosTest {
             boolean isPublishOk = configService.publishConfig(dataId, group, "content");
             Assert.assertTrue(isPublishOk);
         } catch (NacosException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             Assert.fail(e.getMessage());
         }
@@ -70,7 +69,6 @@ public class NacosTest {
             String content = configService.getConfig(dataId, group, NacosServerConfig.localhost.timeout());
             Assert.assertEquals("content",content);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             Assert.fail(e.getMessage());
         }
