@@ -12,6 +12,8 @@ public class EchoNcosUtils {
         Properties properties = new Properties();
         properties.put("serverAddr", nacosServerConfig.addr());
         return NacosFactory.createConfigService(properties);
+
+
     }
 
 }
