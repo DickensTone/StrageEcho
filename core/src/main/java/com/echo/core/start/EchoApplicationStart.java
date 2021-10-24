@@ -1,4 +1,4 @@
-package com.echo.start;
+package com.echo.core.start;
 
 
 /**
