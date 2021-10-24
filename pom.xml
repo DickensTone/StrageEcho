@@ -12,6 +12,7 @@
         <module>ConfigCenter</module>
         <module>IO</module>
         <module>client</module>
+        <module>core</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -9,6 +9,7 @@
         <module name="configcenter" />
         <module name="server" />
         <module name="client" />
+        <module name="core" />
         <module name="IO" />
       </profile>
     </annotationProcessing>
