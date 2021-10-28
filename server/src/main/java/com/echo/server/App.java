@@ -1,5 +1,9 @@
 package com.echo.server;
 
+import com.echo.core.start.EchoApplicationStart;
+
+import java.io.IOException;
+
 /**
  * Start the server.
  * <p>
@@ -9,6 +13,10 @@ package com.echo.server;
  */
 public class App {
     public static void main(String[] args) {
-
+        try {
+            EchoApplicationStart.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
