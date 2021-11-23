@@ -11,6 +11,7 @@ public class EchoNcosUtils {
     public ConfigService getConfigService(String dataId, String group, NacosServerConfig nacosServerConfig) throws NacosException {
         Properties properties = new Properties();
         properties.put("serverAddr", nacosServerConfig.addr());
+        ConfigService configService = NacosFactory.createConfigService(properties);
         return NacosFactory.createConfigService(properties);
 
     }

@@ -1,5 +1,5 @@
 # Echo
-Echo come from a demo of Netty's File server.  
+Echo come from a demo of Netty's File Transport server.  
 Now, it is under casual developing.Because, I'm learning Netty. if you have something interesting about this demo, write it in issues.
 
 This project is under slow develop.I need to learn the knowledge to complete it.
@@ -12,7 +12,11 @@ Echo is a file server, that could send file from client to server.Of course, cli
 [nacos Official documents ](https://nacos.io/)
 
 ### TODO List
-+ complete normal transport
-+ add configCenter
-+ add logframework
++ complete transport
+    - [ ] transport file content
+    - [x] choose transport mode
++ add configCenter<BR>
+  - [ ] use configCenter to publish server address.
+  - [ ] client can get the address
++ add log framework
 

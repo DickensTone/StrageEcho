@@ -49,8 +49,6 @@ public class EchoClient {
 
     public static void main(String[] args)
             throws Exception {
-
-
         final String host = "localhost";
         final int port = 8023;
         new EchoClient(host, port).start();
