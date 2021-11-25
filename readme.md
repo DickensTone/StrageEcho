@@ -3,7 +3,7 @@ Echo come from a demo of Netty's File Transport server.
 Now, it is under casual developing.Because, I'm learning Netty. if you have something interesting about this demo, write it in issues.
 
 This project is under slow develop.I need to learn the knowledge to complete it.
-Process:1%. :)
+Process:5%. :)
 ### Introduction
 Echo is a file server, that could send file from client to server.Of course, client can get the file from server.
 
@@ -12,9 +12,14 @@ Echo is a file server, that could send file from client to server.Of course, cli
 [nacos Official documents ](https://nacos.io/)
 
 ### TODO List
++ Tools
+  - [ ] create a tool to encode the file. 
 + complete transport
-    - [ ] transport file content
-    - [x] choose transport mode
+  - [ ] define some transaction
+    - the start and end symbol
+    - the code format
+  - [ ] transport file content
+  - [ ] choose transport mode
 + add configCenter<BR>
   - [ ] use configCenter to publish server address.
   - [ ] client can get the address

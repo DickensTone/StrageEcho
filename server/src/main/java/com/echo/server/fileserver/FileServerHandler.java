@@ -57,6 +57,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<String> {
             ctx.write(new ChunkedFile(raf));
         }
         ctx.writeAndFlush("\n");
+        ctx.close();
     }
 
     @Override
