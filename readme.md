@@ -23,5 +23,8 @@ Echo is a file server, that could send file from client to server.Of course, cli
 + add configCenter<BR>
   - [ ] use configCenter to publish server address.
   - [ ] client can get the address
++ add ORM Framework
+  - [ ] add Spring Data JPA
+  - [ ] consider and realize the data's consistency
 + add log framework
 
