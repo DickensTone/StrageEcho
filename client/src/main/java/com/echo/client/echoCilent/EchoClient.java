@@ -2,12 +2,14 @@ package com.echo.client.echoCilent;
 
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 
 import java.net.InetSocketAddress;
 
@@ -36,6 +38,8 @@ public class EchoClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {
+                            ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
+                                    Unpooled.wrappedBuffer("@@".getBytes())));
                             ch.pipeline().addLast(
                                     new EchoClientHandler());
                         }

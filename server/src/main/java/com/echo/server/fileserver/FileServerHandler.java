@@ -29,7 +29,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush("HELLO: Type the path of the file to retrieve.\n");
+        ctx.writeAndFlush("HELLO: Type the path of the file to retrieve.\n@@");
     }
 
     @Override
@@ -56,7 +56,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<String> {
             // SSL enabled - cannot use zero-copy file transfer.
             ctx.write(new ChunkedFile(raf));
         }
-        ctx.writeAndFlush("complete\n");
+        ctx.writeAndFlush("complete\n@@");
         ctx.close();
     }
 

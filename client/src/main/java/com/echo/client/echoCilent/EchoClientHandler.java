@@ -16,25 +16,24 @@ import io.netty.util.CharsetUtil;
 @Sharable
 public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
+    private StringBuffer sb = new StringBuffer();
+    private int time = 0;
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n",
+        ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n@@",
                 CharsetUtil.UTF_8));
     }
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
-        //TODO read the data into cache
-
-        System.out.println(
-                "Client received: " + in.toString(CharsetUtil.UTF_8));
-//        ctx.close();
+        sb.append(in.toString(CharsetUtil.UTF_8));
+        System.out.println(sb.toString());
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx,
                                 Throwable cause) {
-        //dump the data
         cause.printStackTrace();
         ctx.close();
     }
