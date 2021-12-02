@@ -16,20 +16,24 @@
 
 package com.echo.server.fileserver;
 
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.DefaultFileRegion;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.ssl.SslHandler;
 import io.netty.handler.stream.ChunkedFile;
+import io.netty.util.CharsetUtil;
 
 import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
 
 public class FileServerHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush("HELLO: Type the path of the file to retrieve.\n@@");
+        ctx.writeAndFlush(Unpooled.copiedBuffer("HELLO: Type the path of the file to retrieve.\n",
+                CharsetUtil.UTF_8));
     }
 
     @Override

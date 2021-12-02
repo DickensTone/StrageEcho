@@ -15,11 +15,14 @@
  */
 package com.echo.server.fileserver;
 
+import com.echo.server.encoder.EchoEncoder;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
@@ -68,7 +71,9 @@ public final class FileServer {
                      }
                      p.addLast(
                              new StringEncoder(CharsetUtil.UTF_8),
+                             new DelimiterBasedFrameDecoder(1024, Unpooled.wrappedBuffer("@@".getBytes())),
                              new LineBasedFrameDecoder(8192),
+                             new EchoEncoder(),
                              new StringDecoder(CharsetUtil.UTF_8),
                              new ChunkedWriteHandler(),
                              new FileServerHandler());

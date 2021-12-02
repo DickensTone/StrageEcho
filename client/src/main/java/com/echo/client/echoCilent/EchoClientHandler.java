@@ -21,7 +21,7 @@ public class EchoClientHandler
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n@@",
+        ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n",
                 CharsetUtil.UTF_8));
     }
 

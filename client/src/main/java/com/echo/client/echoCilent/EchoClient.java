@@ -1,6 +1,7 @@
 package com.echo.client.echoCilent;
 
 
+import com.echo.client.encoder.EchoEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -40,8 +41,11 @@ public class EchoClient {
                         public void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
                                     Unpooled.wrappedBuffer("@@".getBytes())));
+                            ch.pipeline().addLast(new EchoEncoder());
                             ch.pipeline().addLast(
                                     new EchoClientHandler());
+
+
                         }
                     });
             ChannelFuture f = b.connect().sync();
