@@ -60,7 +60,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<String> {
             // SSL enabled - cannot use zero-copy file transfer.
             ctx.write(new ChunkedFile(raf));
         }
-        ctx.writeAndFlush("complete\n@@");
+        ctx.writeAndFlush(Unpooled.copiedBuffer("complete\n",CharsetUtil.UTF_8));
         ctx.close();
     }
 
