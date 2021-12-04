@@ -33,10 +33,12 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.CharsetUtil;
+import org.springframework.stereotype.Component;
 
 /**
  * Server that accept the path of a file an echo back its content.
  */
+@Component
 public final class FileServer {
 
     static final boolean SSL = System.getProperty("ssl") != null;
