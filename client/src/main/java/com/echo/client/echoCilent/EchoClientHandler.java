@@ -1,12 +1,14 @@
 package com.echo.client.echoCilent;
 
 
+import com.echo.client.service.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Listing 2.3 ChannelHandler for the client
@@ -19,6 +21,9 @@ public class EchoClientHandler
     private StringBuffer sb = new StringBuffer();
     private int time = 0;
 
+    @Autowired
+    private WriteQueue writeQueue;
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n",
@@ -27,8 +32,9 @@ public class EchoClientHandler
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
-        sb.append(in.toString(CharsetUtil.UTF_8));
-        System.out.println(sb.toString());
+        sb.setLength(0);
+        writeQueue.addContent(sb);
+
     }
 
     @Override
