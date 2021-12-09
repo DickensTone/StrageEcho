@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Service
-public class WriteWorker implements Runnable{
+public class WriteWorker implements Runnable {
     @Autowired
     private WriteQueue writeQueue;
 
@@ -23,9 +24,31 @@ public class WriteWorker implements Runnable{
     private volatile Future<?> future;
 
 
-    @Override
-    public void run() {
+    public final boolean cancel() {
 
+        canceled = true;
+        Future<?> future = this.future;
+        if (future != null) {
+            return future.cancel(false);
+        }
+        return false;
+    }
+
+
+    public final void setFuture(Future<?> future) {
+        this.future = future;
+        if (canceled) {
+            future.cancel(false);
+        }
+    }
+
+    public final boolean isCanceled() {
+
+        return canceled;
+    }
+
+    @Override
+    public void run()   {
         if(canceled){
             return;
         }
@@ -41,30 +64,6 @@ public class WriteWorker implements Runnable{
         }else{
             cancel();
         }
-        reentrantLock.notify();
-
+        reentrantLock.unlock();
     }
-
-    public final boolean cancel() {
-
-        canceled = true;
-        Future<?> future = this.future;
-        if (future != null) {
-            return future.cancel(true);
-        }
-        return false;
-    }
-
-
-    public final void setFuture(Future<?> future) {
-        this.future = future;
-        if (canceled)
-            future.cancel(true);
-    }
-
-    public final boolean isCanceled() {
-
-        return canceled;
-    }
-
 }

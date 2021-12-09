@@ -1,5 +1,7 @@
 package com.echo.client.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,11 @@ import java.time.Instant;
 public class Transport {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "uuid2"
+    )
     private String Id;
 
     private StringBuffer content;
