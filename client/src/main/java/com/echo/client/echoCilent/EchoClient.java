@@ -11,6 +11,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.net.InetSocketAddress;
 
@@ -19,13 +21,22 @@ import java.net.InetSocketAddress;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
+@Service
 public class EchoClient {
     private final String host;
     private final int port;
 
+    @Autowired
+    EchoClientHandler echoClientHandler;
+
     public EchoClient(String host, int port) {
         this.host = host;
         this.port = port;
+    }
+
+    public EchoClient(){
+        this.host = "localhost";
+        this.port = 8023;
     }
 
     public void start()
@@ -42,8 +53,7 @@ public class EchoClient {
                             ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
                                     Unpooled.wrappedBuffer("@@".getBytes())));
                             ch.pipeline().addLast(new EchoEncoder());
-                            ch.pipeline().addLast(
-                                    new EchoClientHandler());
+                            ch.pipeline().addLast(echoClientHandler);
 
 
                         }

@@ -1,7 +1,8 @@
 package com.echo.client.echoCilent;
 
 
-import com.echo.client.service.WriteQueue;
+import com.echo.client.schedule.WriteAgent;
+import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -9,6 +10,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 /**
  * Listing 2.3 ChannelHandler for the client
@@ -16,13 +20,19 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
 @Sharable
+@Service
 public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
-    private StringBuffer sb = new StringBuffer();
-    private int time = 0;
+    private final StringBuffer sb = new StringBuffer();
 
     @Autowired
     private WriteQueue writeQueue;
+
+    public EchoClientHandler(WriteQueue writeQueue, WriteAgent writeAgent) {
+        Objects.requireNonNull(writeQueue);
+        Objects.requireNonNull(writeAgent);
+        writeQueue.registerListener(writeAgent);
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -33,14 +43,15 @@ public class EchoClientHandler
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
         sb.setLength(0);
-        writeQueue.addContent(sb);
-
+        sb.append(in.toString(CharsetUtil.UTF_8));
+        // need to new a Object for avoiding overwrite the StringBuffer offered to queue.
+        writeQueue.addContent(new StringBuffer(sb));
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx,
                                 Throwable cause) {
         cause.printStackTrace();
-        ctx.close();
+
     }
 }

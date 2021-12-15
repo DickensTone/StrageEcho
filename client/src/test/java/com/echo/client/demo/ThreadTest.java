@@ -8,11 +8,24 @@ import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ThreadTest {
-    @Test
+
     public void test() throws InterruptedException {
-        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        executorService.scheduleWithFixedDelay(new OutputStr(), 100, 1000, TimeUnit.MILLISECONDS);
+        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1, new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                System.out.println("Thread start");
+                Thread t = new Thread(r);
+                t.setDaemon(false);
+                return t;
+            }
+        });
+
+        executorService.scheduleWithFixedDelay(new OutputStr(), 10, 1000, TimeUnit.MILLISECONDS);
         Thread.sleep(1000);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        new ThreadTest().test();
     }
 
     @Test
@@ -20,6 +33,16 @@ public class ThreadTest {
         new BeeperControl().beepForAnHour();
         Thread.sleep(1000);
 
+    }
+
+    @Test
+    public void testDaemonThrad(){
+        new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                return null;
+            }
+        };
     }
 
     class OutputStr implements Runnable{

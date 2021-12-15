@@ -1,8 +1,9 @@
 package com.echo.client.Write;
 
+import com.echo.client.repository.ServiceLog;
 import com.echo.client.schedule.WriteAgent;
-import com.echo.client.service.WriteQueue;
-import com.echo.client.service.WriteWorker;
+import com.echo.client.service.transportLog.WriteQueue;
+import com.echo.client.service.transportLog.WriteWorker;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,20 +25,23 @@ public class WriteQueueTest {
     @Autowired
     private WriteAgent writeAgent;
 
+    @Autowired
+    private ServiceLog serviceLog;
+
     @Test
     public void add() throws InterruptedException {
-        writeQueue.addContent(new StringBuffer("123"));
-        writeQueue.addContent(new StringBuffer("456"));
-        writeQueue.addContent(new StringBuffer("789"));
-        writeQueue.addContent(new StringBuffer("101112"));
-
-        Future<?> future = writeAgent.start();
+        serviceLog.deleteAll();
+        writeQueue.registerListener(writeAgent);
+        writeQueue.addContent(new StringBuffer("1"));
+        writeQueue.addContent(new StringBuffer("2"));
+        writeQueue.addContent(new StringBuffer("3"));
+        writeQueue.addContent(new StringBuffer("4"));
 
         while(!writeWorker.isCanceled()){
             Thread.sleep(2000);
         }
 
-        Assert.assertTrue(future.isCancelled());
+        Assert.assertFalse(writeAgent.isRunning());
         Assert.assertFalse(writeQueue.needDump());
     }
 

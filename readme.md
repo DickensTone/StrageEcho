@@ -13,12 +13,12 @@ Echo is a file server, that could send file from client to server.Of course, cli
 
 ### TODO List
 + Tools
-  - [ ] create a tool to encode the file. 
+  - [X] create a tool to encode the file. 
 + complete transport
   - [ ] define some transaction
     - the start and end symbol
     - the code format
-  - [ ] transport file content
+  - [X] transport file content
   - [ ] choose transport mode
 + add configCenter<BR>
   - [ ] use configCenter to publish server address.

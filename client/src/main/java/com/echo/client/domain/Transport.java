@@ -2,9 +2,9 @@ package com.echo.client.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.Instant;
 
@@ -19,7 +19,7 @@ public class Transport {
     )
     private String Id;
 
-    private StringBuffer content;
+    private String content;
     private Instant createTime;
     private Instant modifyTime;
 
@@ -31,12 +31,13 @@ public class Transport {
         Id = id;
     }
 
-    public StringBuffer getContent() {
+    public String getContent() {
         return content;
     }
 
+    @Column(columnDefinition="varchar(2048)")
     public void setContent(StringBuffer content) {
-        this.content = content;
+        this.content = content.toString();
     }
 
     public Instant getCreateTime() {

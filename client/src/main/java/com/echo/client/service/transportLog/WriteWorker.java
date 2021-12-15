@@ -1,12 +1,12 @@
-package com.echo.client.service;
+package com.echo.client.service.transportLog;
 
 import com.echo.client.domain.Transport;
 import com.echo.client.repository.ServiceLog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -25,11 +25,9 @@ public class WriteWorker implements Runnable {
 
 
     public final boolean cancel() {
-
-        canceled = true;
-        Future<?> future = this.future;
-        if (future != null) {
-            return future.cancel(false);
+        if (this.future != null) {
+            canceled = future.cancel(false);
+            return canceled;
         }
         return false;
     }
@@ -54,9 +52,8 @@ public class WriteWorker implements Runnable {
         }
         reentrantLock.lock();
         if(writeQueue.needDump()){
-            StringBuffer sb = writeQueue.getContent();
             Transport transport = new Transport();
-            transport.setContent(sb);
+            transport.setContent(writeQueue.getContent());
             transport.setCreateTime(Instant.now());
             transport.setModifyTime(Instant.now());
 

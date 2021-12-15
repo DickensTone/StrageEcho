@@ -22,8 +22,7 @@ public class APP {
     @Autowired
     private ServiceLog serviceLog;
 
-    @Autowired
-    private WriteQueueTest writeQueueTest;
+
 
     @Test
     public void UserJPATest(){
@@ -42,6 +41,7 @@ public class APP {
         Assert.assertTrue(userOptional.isPresent());
         Assert.assertEquals(transport.getId(), userOptional.get().getId());
     }
+
 
 
 
