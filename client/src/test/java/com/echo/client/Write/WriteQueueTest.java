@@ -45,5 +45,19 @@ public class WriteQueueTest {
         Assert.assertFalse(writeQueue.needDump());
     }
 
+    @Test
+    public void testScheduleReopen() throws InterruptedException {
+        serviceLog.deleteAll();
+        writeQueue.registerListener(writeAgent);
+        writeQueue.addContent(new StringBuffer("1"));
+        Thread.sleep(3000);
+        writeQueue.addContent(new StringBuffer("2"));
+        Thread.sleep(3000);
+        writeQueue.addContent(new StringBuffer("3"));
+        Thread.sleep(3000);
+        writeQueue.addContent(new StringBuffer("4"));
+        Thread.sleep(3000);
+    }
+
 
 }

@@ -3,7 +3,6 @@ package com.echo.client.service.transportLog;
 import com.echo.client.domain.Transport;
 import com.echo.client.repository.ServiceLog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -18,7 +17,7 @@ public class WriteWorker implements Runnable {
     @Autowired
     private ServiceLog serviceLog;
 
-    private ReentrantLock reentrantLock = new ReentrantLock();
+    private final ReentrantLock reentrantLock = new ReentrantLock();
 
     private volatile boolean canceled = false;
     private volatile Future<?> future;
@@ -35,9 +34,7 @@ public class WriteWorker implements Runnable {
 
     public final void setFuture(Future<?> future) {
         this.future = future;
-        if (canceled) {
-            future.cancel(false);
-        }
+        this.canceled = false;
     }
 
     public final boolean isCanceled() {
