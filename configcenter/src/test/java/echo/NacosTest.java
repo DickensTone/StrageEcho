@@ -48,7 +48,7 @@ public class NacosTest {
     }
 
     /**
-     * Delete COnfig
+     * Delete Config
      */
     @After
     public void deleteConfig(){
@@ -66,6 +66,7 @@ public class NacosTest {
      */
     private void getProperties() {
         try {
+            Thread.sleep(300);
             String content = configService.getConfig(dataId, group, NacosServerConfig.localhost.timeout());
             Assert.assertEquals("content",content);
         } catch (Exception e) {
