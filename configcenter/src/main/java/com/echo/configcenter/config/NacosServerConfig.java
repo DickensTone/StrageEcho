@@ -23,5 +23,4 @@ public enum NacosServerConfig {
         return timeout;
     }
 
-
 }
