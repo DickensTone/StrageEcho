@@ -21,6 +21,7 @@
       <module name="IO" options="-parameters" />
       <module name="client" options="-parameters" />
       <module name="core" options="-parameters" />
+      <module name="echo" options="-parameters" />
       <module name="server" options="-parameters" />
     </option>
   </component>
