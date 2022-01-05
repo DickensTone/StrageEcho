@@ -8,7 +8,7 @@
     - [X] transport file content
     - [ ] choose transport mode
 + add configCenter<BR>
-    - [ ] use configCenter to publish server address.
+    - [X] use configCenter to publish server address.
     - [ ] client can get the address
 + add ORM Framework
     - [x] add Spring Data JPA
