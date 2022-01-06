@@ -26,7 +26,6 @@ import io.netty.handler.stream.ChunkedFile;
 import io.netty.util.CharsetUtil;
 
 import java.io.RandomAccessFile;
-import java.nio.charset.StandardCharsets;
 
 public class FileServerHandler extends SimpleChannelInboundHandler<String> {
 

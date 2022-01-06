@@ -15,6 +15,8 @@
  */
 package com.echo.server.fileserver;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.echo.server.configuration.NacosConfig;
 import com.echo.server.encoder.EchoEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.Unpooled;
@@ -28,33 +30,21 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.util.SelfSignedCertificate;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.CharsetUtil;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * Server that accept the path of a file an echo back its content.
  */
-@Component
+@Service
 public final class FileServer {
+    
+    @NacosValue(value = "${server.port:8787}", autoRefreshed = true)
+    public int port;
 
-    static final boolean SSL = System.getProperty("ssl") != null;
-    // Use the same default port with the telnet example so that we can use the telnet client example to access it.
-    static final int PORT = Integer.parseInt(System.getProperty("port", SSL? "8992" : "8023"));
 
     public void start() throws Exception {
-        // Configure SSL.
-        final SslContext sslCtx;
-        if (SSL) {
-            SelfSignedCertificate ssc = new SelfSignedCertificate();
-            sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
-        } else {
-            sslCtx = null;
-        }
-
         // Configure the server.
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -68,9 +58,6 @@ public final class FileServer {
                  @Override
                  public void initChannel(SocketChannel ch) {
                      ChannelPipeline p = ch.pipeline();
-                     if (sslCtx != null) {
-                         p.addLast(sslCtx.newHandler(ch.alloc()));
-                     }
                      p.addLast(
                              new StringEncoder(CharsetUtil.UTF_8),
                              new DelimiterBasedFrameDecoder(1024, Unpooled.wrappedBuffer("@@".getBytes())),
@@ -83,7 +70,7 @@ public final class FileServer {
              });
 
             // Start the server.
-            ChannelFuture f = b.bind(PORT).sync();
+            ChannelFuture f = b.bind(port).sync();
 
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();

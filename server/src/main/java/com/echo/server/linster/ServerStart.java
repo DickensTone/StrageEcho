@@ -1,5 +1,6 @@
 package com.echo.server.linster;
 
+import com.echo.server.configuration.NacosConfig;
 import com.echo.server.fileserver.FileServer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -11,11 +12,12 @@ import java.util.Map;
 
 @Service
 public class ServerStart implements ApplicationListener<ContextRefreshedEvent>{
-
+    
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         Map<String, FileServer> beansOfType = event.getApplicationContext().getBeansOfType(FileServer.class);
         Collection<FileServer> values = beansOfType.values();
+
         for (FileServer requestHandler : values) {
 
             Class<?> clazz = requestHandler.getClass();

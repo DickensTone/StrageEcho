@@ -29,6 +29,13 @@ public class TestNacos {
 
     @NacosValue(value = "${uuid:helloBug}", autoRefreshed = true)
     private String uuid;
+
+    @NacosValue(value = "${server.port:8787}", autoRefreshed = true)
+    private int port;
+
+    @NacosValue(value = "${server.address:localhost}", autoRefreshed = true)
+    private String addr;
+    
     
     
     @Test
@@ -44,7 +51,11 @@ public class TestNacos {
 
         Assert.assertEquals(content, nowContent);
         Assert.assertEquals(uuid, content);
-        
     }
     
+    @Test
+    public void test1() {
+        System.out.println(addr);
+        System.out.println(port);
+    }
 }
