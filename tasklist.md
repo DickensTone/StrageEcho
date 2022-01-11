@@ -1,20 +1,19 @@
-### TODO List
-+ Tools
-    - [X] create a tool to encode the file.
+### task list
 + complete transport
-    - [ ] define some transaction
-        - the start and end symbol
-        - the code format
     - [X] transport file content
     - [ ] choose transport mode
-+ add configCenter<BR>
++ configCenter
     - [X] use configCenter to publish server address.
     - [ ] client can get the address
+    - [ ] JPA properties move to configuration center.
 + add ORM Framework
     - [x] add Spring Data JPA
-    - [ ] consider and realize the data's consistency
 + DataBase
     - [ ] readonly query database
     - [ ] real time database backup
+    - [ ] consider and realize the data's consistency
 + add log framework
+    - [ ] log4j
++ graphic operator panel 
++ security
 
