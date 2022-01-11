@@ -14,9 +14,6 @@ import java.util.Map;
 @Service
 public class ClientBooter implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
-    WriteQueue writeQueue;
-
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         Map<String, EchoClient> beansOfType = event.getApplicationContext().getBeansOfType(EchoClient.class);

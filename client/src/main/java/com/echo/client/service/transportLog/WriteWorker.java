@@ -2,7 +2,6 @@ package com.echo.client.service.transportLog;
 
 import com.echo.client.domain.Transport;
 import com.echo.client.repository.ServiceLog;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -11,11 +10,16 @@ import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class WriteWorker implements Runnable {
-    @Autowired
+
     private WriteQueue writeQueue;
 
-    @Autowired
+
     private ServiceLog serviceLog;
+
+    public WriteWorker(WriteQueue writeQueue, ServiceLog serviceLog){
+        this.writeQueue = writeQueue;
+        this.serviceLog = serviceLog;
+    }
 
     private final ReentrantLock reentrantLock = new ReentrantLock();
 

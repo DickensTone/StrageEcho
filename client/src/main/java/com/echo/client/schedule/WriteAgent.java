@@ -14,22 +14,25 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class WriteAgent implements DumpAgent {
 
-    @Autowired
     private WriteWorker writeWorker;
 
     private volatile Future<?> future;
 
-    private ReentrantLock lock = new ReentrantLock();
+    private final ReentrantLock lock = new ReentrantLock();
 
     private WriteAgent(){
+    }
 
+    @Autowired
+    public void setWorker(WriteWorker writeWorker){
+        this.writeWorker = writeWorker;
     }
 
     /**
      *
      * start the ScheduleTask
      * We guarantee that the ScheduleTask's number <= 1
-     * @return
+     * @return the future
      */
     @Override
     public Future<?> start(){
@@ -61,17 +64,13 @@ public class WriteAgent implements DumpAgent {
      * return a state.
      * True:there is a scheduleTask is running.
      * False: this no scheduleTask is running.
-     * @return
+     * @return the state
      */
     public boolean isRunning(){
         if(this.future == null){
             return false;
         }
-        if(this.future.isCancelled()){
-            return false;
-        }
-
-        return true;
+        return !this.future.isCancelled();
     }
 
     public static WriteAgent getInstance(){
