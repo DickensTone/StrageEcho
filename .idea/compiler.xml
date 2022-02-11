@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="server" />
+        <module name="core" />
+        <module name="examples" />
+        <module name="IO" />
         <module name="configcenter" />
         <module name="ConfigCenter" />
-        <module name="server" />
         <module name="client" />
-        <module name="core" />
-        <module name="IO" />
+        <module name="jpa" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,7 +24,10 @@
       <module name="client" options="-parameters" />
       <module name="core" options="-parameters" />
       <module name="echo" options="" />
+      <module name="examples" options="-parameters" />
+      <module name="jpa" options="-parameters" />
       <module name="server" options="-parameters" />
+      <module name="test" options="-parameters" />
     </option>
   </component>
 </project>
