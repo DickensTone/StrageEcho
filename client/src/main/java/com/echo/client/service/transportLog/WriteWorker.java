@@ -11,10 +11,9 @@ import java.util.concurrent.locks.ReentrantLock;
 @Service
 public class WriteWorker implements Runnable {
 
-    private WriteQueue writeQueue;
+    private final WriteQueue writeQueue;
 
-
-    private ServiceLog serviceLog;
+    private final ServiceLog serviceLog;
 
     public WriteWorker(WriteQueue writeQueue, ServiceLog serviceLog){
         this.writeQueue = writeQueue;

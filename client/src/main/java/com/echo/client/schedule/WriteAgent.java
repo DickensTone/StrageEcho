@@ -3,6 +3,7 @@ package com.echo.client.schedule;
 import com.echo.client.schedule.dumpInterface.DumpAgent;
 import com.echo.client.service.transportLog.WriteWorker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;

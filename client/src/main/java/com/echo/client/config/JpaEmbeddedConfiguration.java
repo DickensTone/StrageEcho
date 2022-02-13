@@ -1,5 +1,6 @@
-package com.domain;
+package com.echo.client.config;
 
+import com.echo.client.domain.Transport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -15,15 +16,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableJpaRepositories("com.echo.client.repository")
 @EnableTransactionManagement
-public class JpaConfiguration {
+public class JpaEmbeddedConfiguration {
 
-
-    @Bean
-    public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.HSQL).build();
-    }
 
     @Bean
     DataSource customerDataSource() {
@@ -41,7 +37,7 @@ public class JpaConfiguration {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan(JpaConfiguration.class.getPackage().getName());
+        factory.setPackagesToScan(Transport.class.getPackage().getName());
         factory.setDataSource(customerDataSource());
         return factory;
     }

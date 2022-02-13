@@ -26,8 +26,12 @@ public class EchoClient {
     private final String host;
     private final int port;
 
-    @Autowired
     EchoClientHandler echoClientHandler;
+
+
+    public void setEchoClientHandler(EchoClientHandler echoClientHandler){
+        this.echoClientHandler = echoClientHandler;
+    }
 
     public EchoClient(String host, int port) {
         this.host = host;
@@ -65,10 +69,4 @@ public class EchoClient {
         }
     }
 
-    public static void main(String[] args)
-            throws Exception {
-        final String host = "localhost";
-        final int port = 8023;
-        new EchoClient(host, port).start();
-    }
 }

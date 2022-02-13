@@ -25,12 +25,14 @@ public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
     private final StringBuffer sb = new StringBuffer();
 
-    @Autowired
-    private WriteQueue writeQueue;
+
+    private final WriteQueue writeQueue;
+
 
     public EchoClientHandler(WriteQueue writeQueue, WriteAgent writeAgent) {
         Objects.requireNonNull(writeQueue);
         Objects.requireNonNull(writeAgent);
+        this.writeQueue = writeQueue;
         writeQueue.registerListener(writeAgent);
     }
 

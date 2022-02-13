@@ -1,21 +1,20 @@
-package main;
+package com.echo.client.jpa;
 
-import com.domain.Transport;
+
+import com.echo.client.domain.Transport;
+import com.echo.client.repository.ServiceLog;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.JPA;
-import com.domain.ServiceRepository;
 
-@SpringBootTest(classes = JPA.class)
+@SpringBootTest
 public class EmbeddedDBTest {
     @Autowired
-    private ServiceRepository serviceRepository;
+    private ServiceLog serviceLog;
 
 
     @Test
     public void test1(){
-
-        serviceRepository.save(new Transport());
+        serviceLog.save(new Transport());
     }
 }
