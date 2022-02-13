@@ -27,7 +27,7 @@
       <module name="examples" options="-parameters" />
       <module name="jpa" options="-parameters" />
       <module name="server" options="-parameters" />
-      <module name="test" options="-parameters" />
+      <module name="test" options="" />
     </option>
   </component>
 </project>
