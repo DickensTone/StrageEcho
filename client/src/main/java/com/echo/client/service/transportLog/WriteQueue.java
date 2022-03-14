@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  *  add the content to the Queue.
@@ -17,12 +19,12 @@ import java.util.Set;
  *
  */
 public class WriteQueue {
-    private final Queue<StringBuffer> queue;
+    private final LinkedBlockingDeque<StringBuffer> queue;
 
     private final Set<DumpAgent> dumpAgent;
 
     private WriteQueue(){
-        queue = new LinkedList<>();
+        queue = new LinkedBlockingDeque<>();
         dumpAgent = new HashSet<>();
     }
 
@@ -58,7 +60,7 @@ public class WriteQueue {
     }
 
     public boolean needDump()  {
-        return queue.size() > 0;
+        return !queue.isEmpty();
     }
 
     /**

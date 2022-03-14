@@ -1,18 +1,15 @@
 package com.echo.client.Write;
 
 import com.echo.client.repository.ServiceLog;
-import com.echo.client.schedule.WriteAgent;
+import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import com.echo.client.service.transportLog.WriteWorker;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class WriteQueueTest {
     @Autowired
     private WriteQueue writeQueue;
@@ -21,7 +18,7 @@ public class WriteQueueTest {
     private WriteWorker writeWorker;
 
     @Autowired
-    private WriteAgent writeAgent;
+    private LogWriteAgent writeAgent;
 
     @Autowired
     private ServiceLog serviceLog;

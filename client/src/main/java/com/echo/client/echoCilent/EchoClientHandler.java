@@ -1,7 +1,7 @@
 package com.echo.client.echoCilent;
 
 
-import com.echo.client.schedule.WriteAgent;
+import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -9,7 +9,6 @@ import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -29,7 +28,7 @@ public class EchoClientHandler
     private final WriteQueue writeQueue;
 
 
-    public EchoClientHandler(WriteQueue writeQueue, WriteAgent writeAgent) {
+    public EchoClientHandler(WriteQueue writeQueue, LogWriteAgent writeAgent) {
         Objects.requireNonNull(writeQueue);
         Objects.requireNonNull(writeAgent);
         this.writeQueue = writeQueue;
@@ -46,7 +45,7 @@ public class EchoClientHandler
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
         sb.setLength(0);
         sb.append(in.toString(CharsetUtil.UTF_8));
-        // need to new a Object for avoiding overwrite the StringBuffer offered to queue.
+        // need to new an Object for avoiding overwrite the StringBuffer offered to queue.
         writeQueue.addContent(new StringBuffer(sb));
     }
 

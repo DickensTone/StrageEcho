@@ -1,10 +1,6 @@
 package com.echo.client.service.lintener;
 
 import com.echo.client.echoCilent.EchoClient;
-import com.echo.client.schedule.WriteAgent;
-import com.echo.client.schedule.dumpInterface.DumpAgent;
-import com.echo.client.service.transportLog.WriteQueue;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;

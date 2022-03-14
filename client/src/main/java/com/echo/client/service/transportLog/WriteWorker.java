@@ -47,20 +47,19 @@ public class WriteWorker implements Runnable {
 
     @Override
     public void run()   {
-        if(canceled){
-            return;
-        }
-        reentrantLock.lock();
-        if(writeQueue.needDump()){
-            Transport transport = new Transport();
-            transport.setContent(writeQueue.getContent());
-            transport.setCreateTime(Instant.now());
-            transport.setModifyTime(Instant.now());
+        if(writeQueue.needDump()) {
+            // make the queue as a blocking queue.
+            StringBuffer sb = writeQueue.getContent();
+            if (sb != null) {
+                Transport transport = new Transport();
+                transport.setContent(sb);
+                transport.setCreateTime(Instant.now());
+                transport.setModifyTime(Instant.now());
 
-            serviceLog.save(transport);
-        }else{
+                serviceLog.save(transport);
+            }
+        }else {
             cancel();
         }
-        reentrantLock.unlock();
     }
 }

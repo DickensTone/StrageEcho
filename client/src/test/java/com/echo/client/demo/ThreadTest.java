@@ -65,4 +65,19 @@ public class ThreadTest {
             scheduler.schedule(canceller, 1, HOURS);
         }
     }
+
+
+
+    @Test
+    public void test11(){
+        testFinally();
+    }
+    public int testFinally(){
+
+        try {
+            return 5;
+        }finally {
+            System.out.println("finally");
+        }
+    }
 }

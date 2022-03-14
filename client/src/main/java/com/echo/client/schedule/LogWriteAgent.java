@@ -3,7 +3,6 @@ package com.echo.client.schedule;
 import com.echo.client.schedule.dumpInterface.DumpAgent;
 import com.echo.client.service.transportLog.WriteWorker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
@@ -13,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *  Start the ScheduleTask to write the Log in the database.
  */
 
-public class WriteAgent implements DumpAgent {
+public class LogWriteAgent implements DumpAgent {
 
     private WriteWorker writeWorker;
 
@@ -21,7 +20,10 @@ public class WriteAgent implements DumpAgent {
 
     private final ReentrantLock lock = new ReentrantLock();
 
-    private WriteAgent(){
+    private final ScheduledThreadPoolExecutor executor;
+
+    private LogWriteAgent(){
+        executor = new ScheduledThreadPoolExecutor(1);
     }
 
     @Autowired
@@ -38,26 +40,28 @@ public class WriteAgent implements DumpAgent {
     @Override
     public Future<?> start(){
 
-        lock.lock();
         if(isRunning()){
             return null;
         }
-        ScheduledExecutorService schedule = new ScheduledThreadPoolExecutor(1, (r) -> {
-            Thread t = new Thread(r);
-            t.setDaemon(false);
-            return t;
-        });
 
-        // get the Future that.It will be stopped in the worker thread.
-        Future<?> future =  schedule.scheduleWithFixedDelay(
-                writeWorker,
-                1000,
-                1000,
-                TimeUnit.MILLISECONDS);
+        lock.lock();
+        try {
 
-        writeWorker.setFuture(future);
-        this.future =future;
-        lock.unlock();
+            if (isRunning()) {
+                return null;
+            }
+            // get the Future that.It will be stopped in the worker thread.
+            Future<?> future = this.executor.scheduleWithFixedDelay(
+                    writeWorker,
+                    1000,
+                    1000,
+                    TimeUnit.MILLISECONDS);
+
+            writeWorker.setFuture(future);
+            this.future = future;
+        }finally {
+            lock.unlock();
+        }
         return future;
     }
 
@@ -74,12 +78,12 @@ public class WriteAgent implements DumpAgent {
         return !this.future.isCancelled();
     }
 
-    public static WriteAgent getInstance(){
+    public static LogWriteAgent getInstance(){
         return Loader.writeAgent;
     }
 
     private static class Loader {
-        private static final WriteAgent writeAgent = new WriteAgent();
+        private static final LogWriteAgent writeAgent = new LogWriteAgent();
 
     }
 
