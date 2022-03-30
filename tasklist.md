@@ -14,6 +14,8 @@
     - [ ] consider and realize the data's consistency
 + add log framework
     - [ ] log4j
++ message queue
+    - [ ] kafka to replace some queue
 + graphic operator panel 
 + security
 

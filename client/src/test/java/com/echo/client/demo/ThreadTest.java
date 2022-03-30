@@ -80,4 +80,11 @@ public class ThreadTest {
             System.out.println("finally");
         }
     }
+
+    @Test
+    public void test2(){
+        Greet hello = new HelloWorld();
+
+        System.out.println(hello.getClass().getSimpleName());
+    }
 }

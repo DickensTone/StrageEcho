@@ -1,9 +1,11 @@
-package com.echo.client.config;
+package com.echo.client.config.databaseConfig;
 
 import com.echo.client.domain.Transport;
+import com.echo.client.enums.DataBaseType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -14,15 +16,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories("com.echo.client.repository")
 @EnableTransactionManagement
-public class JpaEmbeddedConfiguration {
-
-
+public class JpaDataBaseConfiguration {
     @Bean
-    DataSource customerDataSource() {
+    public DataSource embeddedDataSource() {
         return new EmbeddedDatabaseBuilder().//
                 setType(EmbeddedDatabaseType.HSQL).//
                 setName("servicelog").//
@@ -30,15 +33,47 @@ public class JpaEmbeddedConfiguration {
     }
 
     @Bean
+    public DataSource externalDataSource(){
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUsername("root");
+        dataSource.setPassword("root");
+        dataSource.setUrl(
+                "jdbc:mysql://localhost:3306/usr_info?createDatabaseIfNotExist=true");
+        return dataSource;
+
+    }
+
+    @Bean
+    public DataSource dynamicDataSource(){
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        DataSource embeddedDataSource = embeddedDataSource();
+        DataSource externalDataSource = externalDataSource();
+        targetDataSources.put(DataBaseType.Embedded,
+                embeddedDataSource);
+        targetDataSources.put(DataBaseType.External,
+                externalDataSource);
+
+        DataSourceRouter dynamicDataSource
+                = new DataSourceRouter();
+        dynamicDataSource.setTargetDataSources(targetDataSources);
+        dynamicDataSource.setDefaultTargetDataSource(embeddedDataSource);
+        return dynamicDataSource;
+    }
+
+    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
-
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan(Transport.class.getPackage().getName());
-        factory.setDataSource(customerDataSource());
+        factory.setDataSource(dynamicDataSource());
+        factory.setJpaProperties(new Properties(){{
+            setProperty("spring.jpa.hibernate.ddl-auto=update", "create");
+        }});
         return factory;
     }
 

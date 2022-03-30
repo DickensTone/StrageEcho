@@ -1,7 +1,11 @@
 package com.echo.client.jpa;
 
 
+import com.echo.client.config.databaseConfig.DataBaseContextHolder;
+import com.echo.client.demo.Greet;
+import com.echo.client.demo.HelloWorld;
 import com.echo.client.domain.Transport;
+import com.echo.client.enums.DataBaseType;
 import com.echo.client.repository.ServiceLog;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,9 @@ public class EmbeddedDBTest {
 
     @Test
     public void test1(){
+        DataBaseContextHolder.set(DataBaseType.Embedded);
         serviceLog.save(new Transport());
     }
+
+
 }
