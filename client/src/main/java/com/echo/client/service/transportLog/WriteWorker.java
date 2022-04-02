@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.concurrent.Future;
-import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class WriteWorker implements Runnable {
@@ -19,8 +18,6 @@ public class WriteWorker implements Runnable {
         this.writeQueue = writeQueue;
         this.serviceLog = serviceLog;
     }
-
-    private final ReentrantLock reentrantLock = new ReentrantLock();
 
     private volatile boolean canceled = false;
     private volatile Future<?> future;

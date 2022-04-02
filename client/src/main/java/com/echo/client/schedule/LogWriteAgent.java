@@ -43,7 +43,6 @@ public class LogWriteAgent implements DumpAgent {
         if(isRunning()){
             return null;
         }
-
         lock.lock();
         try {
 

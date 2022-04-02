@@ -67,13 +67,14 @@ public class JpaDataBaseConfiguration {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setShowSql(true);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan(Transport.class.getPackage().getName());
         factory.setDataSource(dynamicDataSource());
-        factory.setJpaProperties(new Properties(){{
-            setProperty("spring.jpa.hibernate.ddl-auto=update", "create");
-        }});
+//        factory.setJpaProperties(new Properties(){{
+//            setProperty("spring.jpa.hibernate.naming.physical-strategy","org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl");
+//        }});
         return factory;
     }
 

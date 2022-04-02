@@ -19,7 +19,7 @@ public class EmbeddedDBTest {
 
     @Test
     public void test1(){
-        DataBaseContextHolder.set(DataBaseType.Embedded);
+        DataBaseContextHolder.set(DataBaseType.External);
         serviceLog.save(new Transport());
     }
 
