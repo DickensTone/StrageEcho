@@ -11,6 +11,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.InetSocketAddress;
@@ -28,6 +29,7 @@ public class EchoClient {
     EchoClientHandler echoClientHandler;
 
 
+    @Autowired
     public void setEchoClientHandler(EchoClientHandler echoClientHandler){
         this.echoClientHandler = echoClientHandler;
     }

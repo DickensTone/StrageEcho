@@ -13,5 +13,5 @@ package com.echo.client.console.strategy;
  */
 public interface CommandHandler {
 
-    void handle(String command);
+    void handle(int argv,String[] args);
 }

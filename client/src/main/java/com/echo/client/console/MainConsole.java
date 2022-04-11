@@ -1,6 +1,5 @@
 package com.echo.client.console;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.echo.client.console.strategy.CommandHandler;
 import com.echo.client.console.strategy.CommandStrategyContext;
 
@@ -17,7 +16,7 @@ public class MainConsole implements Runnable{
         try (BufferedReader sc = new BufferedReader(new InputStreamReader(new FilterInputStream(System.in){
             @Override
             public void close(){
-
+                // avoiding closing System.in when closing the opened BufferReader
             }
         }))) {
             String commandLine = sc.readLine();
@@ -33,7 +32,7 @@ public class MainConsole implements Runnable{
             }
 
             CommandHandler strategy = CommandStrategyContext.getStrategy(commands[1]);
-            strategy.handle(commands[2]);
+            strategy.handle(commands.length, commands);
         } catch (Exception e) {
             System.out.println("IOError:" + e.getMessage());
         }
