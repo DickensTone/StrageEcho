@@ -1,13 +1,9 @@
 package com.echo.client.service.transportLog;
 
 import com.echo.client.schedule.dumpInterface.DumpAgent;
-import org.springframework.context.annotation.Bean;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**

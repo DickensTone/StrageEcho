@@ -8,9 +8,10 @@
     - [ ] JPA properties move to configuration center.
 + add ORM Framework
     - [x] add Spring Data JPA
+    - [X] dynamic datasource
 + DataBase
     - [ ] readonly query database
-    - [ ] real time database backup
+    - [ ] realtime database backup
     - [ ] consider and realize the data's consistency
 + add log framework
     - [ ] log4j

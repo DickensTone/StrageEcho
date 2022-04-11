@@ -1,0 +1,8 @@
+There are some Usages:
+
+    1.run the client.
+    2.interactive with program through console.
+
+There are the commands:
+01 send file to server
+02 get file from server

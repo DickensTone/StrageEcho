@@ -1,7 +1,10 @@
 package com.echo.client.demo;
 
+import com.echo.client.console.MainConsole;
 import org.junit.Test;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.*;
 
 import static java.util.concurrent.TimeUnit.HOURS;
@@ -64,27 +67,29 @@ public class ThreadTest {
             Runnable canceller = () -> beeperHandle.cancel(false);
             scheduler.schedule(canceller, 1, HOURS);
         }
+
+        public <T> T hello(String h){
+            try {
+                int i = 1/0;
+            }catch (Exception e){
+                return (T)"catch";
+            }finally {
+                return (T)"finally";
+            }
+        }
     }
 
 
 
     @Test
-    public void test11(){
-        testFinally();
-    }
-    public int testFinally(){
-
-        try {
-            return 5;
-        }finally {
-            System.out.println("finally");
-        }
+    public void testFinally(){
+        BeeperControl beeperControl = new BeeperControl();
+        String t = beeperControl.hello("se");
+        System.out.println(t);
     }
 
     @Test
     public void test2(){
-        Greet hello = new HelloWorld();
 
-        System.out.println(hello.getClass().getSimpleName());
     }
 }
