@@ -7,13 +7,18 @@ import java.io.*;
 
 public class MainConsole implements Runnable{
 
+    private InputStream input;
+
+    public void setInput(InputStream in) {
+        this.input = in;
+    }
 
     /**
      * read command from console.
      * handle the command.
      */
-    public void readCommand() {
-        try (BufferedReader sc = new BufferedReader(new InputStreamReader(new FilterInputStream(System.in){
+    public void readCommand() throws IOException {
+        try (BufferedReader sc = new BufferedReader(new InputStreamReader(new FilterInputStream(this.input){
             @Override
             public void close(){
                 // avoiding closing System.in when closing the opened BufferReader
@@ -27,7 +32,7 @@ public class MainConsole implements Runnable{
                 return;
             }
             if(!commands[0].equals("echo")){
-                System.out.println("can't reorganize "+commands[0]);
+                System.out.println("command not found  "+commands[0]);
                 return;
             }
 
@@ -35,6 +40,7 @@ public class MainConsole implements Runnable{
             strategy.handle(commands.length, commands);
         } catch (Exception e) {
             System.out.println("IOError:" + e.getMessage());
+            throw e;
         }
 
     }
@@ -42,7 +48,11 @@ public class MainConsole implements Runnable{
     @Override
     public void run() {
         while (true) {
-            readCommand();
+            try {
+                readCommand();
+            }catch (Exception e){
+                break;
+            }
         }
     }
 }

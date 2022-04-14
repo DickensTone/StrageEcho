@@ -55,4 +55,14 @@ public class Transport {
     public void setModifyTime(Instant modifyTime) {
         this.modifyTime = modifyTime;
     }
+
+    @Override
+    public String toString() {
+        return "Transport{" +
+                "Id='" + Id + '\'' +
+                ", content='" + content + '\'' +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
+    }
 }

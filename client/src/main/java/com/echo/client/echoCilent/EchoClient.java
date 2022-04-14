@@ -11,25 +11,19 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.net.InetSocketAddress;
 
 /**
  * Listing 2.4 Main class for the client
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-@Service
 public class EchoClient {
     private final String host;
     private final int port;
 
-    EchoClientHandler echoClientHandler;
+    private EchoClientHandler echoClientHandler;
 
 
-    @Autowired
     public void setEchoClientHandler(EchoClientHandler echoClientHandler){
         this.echoClientHandler = echoClientHandler;
     }
@@ -51,7 +45,6 @@ public class EchoClient {
             Bootstrap b = new Bootstrap();
             b.group(group)
                     .channel(NioSocketChannel.class)
-                    .remoteAddress(new InetSocketAddress(host, port))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {
@@ -59,11 +52,9 @@ public class EchoClient {
                                     Unpooled.wrappedBuffer("@@".getBytes())));
                             ch.pipeline().addLast(new EchoEncoder());
                             ch.pipeline().addLast(echoClientHandler);
-
-
                         }
                     });
-            ChannelFuture f = b.connect().sync();
+            ChannelFuture f = b.connect(host, port).sync();
             f.channel().closeFuture().sync();
         } finally {
             group.shutdownGracefully().sync();

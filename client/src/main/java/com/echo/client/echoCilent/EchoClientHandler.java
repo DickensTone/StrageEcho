@@ -5,10 +5,10 @@ import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -18,26 +18,19 @@ import java.util.Objects;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-@Sharable
-@Service
+
 public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
     private final StringBuffer sb = new StringBuffer();
 
+    final String sendMessage;
 
     private final WriteQueue writeQueue;
 
 
-    public EchoClientHandler(WriteQueue writeQueue, LogWriteAgent writeAgent) {
-        Objects.requireNonNull(writeQueue);
-        Objects.requireNonNull(writeAgent);
-        this.writeQueue = writeQueue;
-        writeQueue.registerListener(writeAgent);
-    }
-
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("C:\\Users\\ddt\\Desktop\\helloIO.txt\n",
+        ctx.writeAndFlush(Unpooled.copiedBuffer(this.sendMessage,
                 CharsetUtil.UTF_8));
     }
 
@@ -54,5 +47,25 @@ public class EchoClientHandler
                                 Throwable cause) {
         cause.printStackTrace();
 
+    }
+
+    //Builder Mode
+    public static class Builder{
+        private final WriteQueue writeQueue;
+        private final String sendMessage;
+
+        public Builder(WriteQueue writeQueue, String sendMessage){
+            this.writeQueue = writeQueue;
+            this.sendMessage = sendMessage;
+        }
+
+        public EchoClientHandler build(){
+            return new EchoClientHandler(this);
+        }
+    }
+
+    private EchoClientHandler(Builder builder){
+        this.writeQueue = builder.writeQueue;
+        this.sendMessage = builder.sendMessage;
     }
 }

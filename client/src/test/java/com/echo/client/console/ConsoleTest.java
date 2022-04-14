@@ -4,9 +4,13 @@ package com.echo.client.console;
 import com.echo.client.console.strategy.CommandHandler;
 import com.echo.client.console.strategy.CommandStrategyContext;
 import com.echo.client.console.strategy.SendCommandHandler;
-import com.echo.client.echoCilent.EchoClient;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class ConsoleTest {
 
@@ -18,16 +22,30 @@ public class ConsoleTest {
         t.join();
     }
 
-
     @Test
     public void testStrategyRegister(){
-        final String[] p = new String[1];
         String s = "ppgod";
         String strategyName = "send";
-        CommandStrategyContext.register(strategyName, (argv, args) -> p[0]=args[0]);
+        CommandStrategyContext.register(strategyName, (argv, args) -> args[0] = s);
+        String[] inputString = new String[]{"ppppppppppppppp"};
 
         CommandHandler handler = CommandStrategyContext.getStrategy(strategyName);
-        handler.handle(1, new String[]{s});
-        Assert.assertEquals(p[0], s);
+        handler.handle(1, inputString);
+        Assert.assertEquals(inputString[0], s);
+    }
+
+    @Test
+    public void test() throws InterruptedException {
+        String address = "sssssss";
+        InputStream inputStream = new ByteArrayInputStream(("echo send "+address).getBytes(StandardCharsets.UTF_8));
+        MainConsole console = new MainConsole();
+        console.setInput(inputStream);
+        Thread t = new Thread(console);
+        final String[] p = new String[1];
+        CommandStrategyContext.register("send", (argv, args) -> p[0] = args[2]);
+        t.setName("Console-input");
+        t.start();
+        t.join();
+        Assert.assertEquals(p[0], address);
     }
 }

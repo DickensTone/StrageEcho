@@ -1,5 +1,7 @@
+import com.echo.io.env.SystemProperty;
 import com.echo.io.file.EchoFileWriter;
 import com.echo.io.file.FileWorker;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
@@ -17,10 +19,24 @@ public class FileTest {
 
             FileWorker fileWorker = new FileWorker();
             fileWorker.write(fileWriter);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Test
+    public void fileCreate(){
+        String home = System.getProperty("user.home");
+        String path = home + SystemProperty.defaultSyncPath;
+
+        File file = new File(path);
+
+        if(!file.exists()){
+            System.out.println(file.mkdirs());
+        }
+
+        Assert.assertTrue(file.exists());
+
     }
 }
