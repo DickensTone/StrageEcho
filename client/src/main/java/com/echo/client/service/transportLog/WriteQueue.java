@@ -1,8 +1,13 @@
 package com.echo.client.service.transportLog;
 
+import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.schedule.dumpInterface.DumpAgent;
+import com.echo.core.utils.SingletonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingDeque;
 
@@ -15,12 +20,24 @@ import java.util.concurrent.LinkedBlockingDeque;
  *
  */
 public class WriteQueue {
-    private final LinkedBlockingDeque<StringBuffer> queue;
+    private final LinkedBlockingDeque<StringBuffer> queue = SingletonUtil.linkedBlockingDeque;
 
     private final Set<DumpAgent> dumpAgent;
 
+    private LogWriteAgent logWriteAgent;
+
+    @Autowired
+    public void setLogWriteAgent(LogWriteAgent logWriteAgent) {
+        this.logWriteAgent = logWriteAgent;
+    }
+
+    @PostConstruct
+    public void initAgent(){
+        Objects.requireNonNull(logWriteAgent);
+        registerListener(logWriteAgent);
+    }
+
     private WriteQueue(){
-        queue = new LinkedBlockingDeque<>();
         dumpAgent = new HashSet<>();
     }
 
@@ -61,7 +78,7 @@ public class WriteQueue {
 
     /**
      * SingleInstance MODE
-     * @return WriteQueue's SINGLEINSTANCE
+     * @return WriteQueue's SINGLETON_INSTANCE
      */
     public static WriteQueue getInstance(){
         return Booster.SingleInstance;
@@ -70,7 +87,7 @@ public class WriteQueue {
     /** register the Listener.
      * The DumpAgent will invoke when the add method is called.
      *
-     * @param agent
+     * @param agent the listener loaded after add
      */
     public void registerListener(DumpAgent agent){
         dumpAgent.add(agent);

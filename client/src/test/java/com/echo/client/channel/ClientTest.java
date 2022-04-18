@@ -5,7 +5,6 @@ import com.echo.client.domain.Transport;
 import com.echo.client.echoCilent.EchoClientHandler;
 import com.echo.client.enums.DataBaseType;
 import com.echo.client.repository.ServiceLog;
-import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -17,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 
 @SpringBootTest
@@ -27,8 +25,6 @@ public class ClientTest {
     @Autowired
     private WriteQueue writeQueue;
 
-    @Autowired
-    private LogWriteAgent logWriteAgent;
 
     @Autowired
     private ServiceLog serviceLog;
@@ -36,7 +32,6 @@ public class ClientTest {
     @Test
     public void test() throws InterruptedException {
         ByteBuf buf = Unpooled.copiedBuffer("This 23:30", StandardCharsets.UTF_8);
-        writeQueue.registerListener(logWriteAgent);
 
         EmbeddedChannel embeddedChannel = new EmbeddedChannel(new EchoClientHandler.
                 Builder(writeQueue, "helloWorld").build());
@@ -54,7 +49,6 @@ public class ClientTest {
 
         buf.release();
         read.release();
-
     }
 
 

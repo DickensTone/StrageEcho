@@ -11,6 +11,7 @@ import io.netty.util.CharsetUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.PrintWriter;
 import java.util.Objects;
 
 /**
@@ -22,6 +23,7 @@ import java.util.Objects;
 public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
     private final StringBuffer sb = new StringBuffer();
+    private final PrintWriter pw = new PrintWriter(System.out);
 
     final String sendMessage;
 
@@ -36,17 +38,19 @@ public class EchoClientHandler
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
-        sb.setLength(0);
-        sb.append(in.toString(CharsetUtil.UTF_8));
-        // need to new an Object for avoiding overwrite the StringBuffer offered to queue.
-        writeQueue.addContent(new StringBuffer(sb));
+        pw.println(in.toString(CharsetUtil.UTF_8));
+        pw.flush();
+//
+//        sb.setLength(0);
+//        sb.append(in.toString(CharsetUtil.UTF_8));
+//        // need to new an Object for avoiding overwrite the StringBuffer offered to queue.
+//        writeQueue.addContent(new StringBuffer(sb));
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx,
                                 Throwable cause) {
         cause.printStackTrace();
-
     }
 
     //Builder Mode

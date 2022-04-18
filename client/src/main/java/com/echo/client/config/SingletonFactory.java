@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SingletonFactory {
+
     @Bean
     public LogWriteAgent getWriteAgent(){
         return LogWriteAgent.getInstance();

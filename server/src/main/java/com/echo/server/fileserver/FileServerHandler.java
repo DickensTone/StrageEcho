@@ -16,6 +16,7 @@
 
 package com.echo.server.fileserver;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -26,8 +27,9 @@ import io.netty.handler.stream.ChunkedFile;
 import io.netty.util.CharsetUtil;
 
 import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
 
-public class FileServerHandler extends SimpleChannelInboundHandler<String> {
+public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -36,11 +38,11 @@ public class FileServerHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx,  ByteBuf msg) throws Exception {
         RandomAccessFile raf = null;
         long length = -1;
         try {
-            raf = new RandomAccessFile(msg, "r");
+            raf = new RandomAccessFile(msg.toString(StandardCharsets.UTF_8), "r");
             length = raf.length();
         } catch (Exception e) {
             ctx.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');

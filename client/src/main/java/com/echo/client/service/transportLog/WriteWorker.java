@@ -2,6 +2,7 @@ package com.echo.client.service.transportLog;
 
 import com.echo.client.domain.Transport;
 import com.echo.client.repository.ServiceLog;
+import com.echo.core.utils.SingletonUtil;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -10,12 +11,9 @@ import java.util.concurrent.Future;
 @Service
 public class WriteWorker implements Runnable {
 
-    private final WriteQueue writeQueue;
-
     private final ServiceLog serviceLog;
 
-    public WriteWorker(WriteQueue writeQueue, ServiceLog serviceLog){
-        this.writeQueue = writeQueue;
+    public WriteWorker(ServiceLog serviceLog){
         this.serviceLog = serviceLog;
     }
 
@@ -23,12 +21,10 @@ public class WriteWorker implements Runnable {
     private volatile Future<?> future;
 
 
-    public final boolean cancel() {
+    public final void cancel() {
         if (this.future != null) {
-            canceled = future.cancel(false);
-            return canceled;
+            future.cancel(false);
         }
-        return false;
     }
 
 
@@ -44,9 +40,9 @@ public class WriteWorker implements Runnable {
 
     @Override
     public void run()   {
-        if(writeQueue.needDump()) {
+        if(!SingletonUtil.linkedBlockingDeque.isEmpty()) {
             // make the queue as a blocking queue.
-            StringBuffer sb = writeQueue.getContent();
+            StringBuffer sb = SingletonUtil.linkedBlockingDeque.poll();
             if (sb != null) {
                 Transport transport = new Transport();
                 transport.setContent(sb);
