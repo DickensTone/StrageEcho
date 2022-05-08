@@ -55,7 +55,7 @@ public class EchoClient {
                         }
                     });
             ChannelFuture f = b.connect(host, port).sync();
-            f.channel().closeFuture().sync();
+
         } finally {
             group.shutdownGracefully().sync();
         }

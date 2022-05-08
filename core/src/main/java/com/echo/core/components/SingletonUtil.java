@@ -1,4 +1,4 @@
-package com.echo.core.utils;
+package com.echo.core.components;
 
 import java.util.concurrent.LinkedBlockingDeque;
 

@@ -5,6 +5,7 @@ import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
@@ -28,6 +29,8 @@ public class EchoClientHandler
     final String sendMessage;
 
     private final WriteQueue writeQueue;
+
+    private Channel channel;
 
 
     @Override
@@ -71,5 +74,11 @@ public class EchoClientHandler
     private EchoClientHandler(Builder builder){
         this.writeQueue = builder.writeQueue;
         this.sendMessage = builder.sendMessage;
+    }
+
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        super.channelRegistered(ctx);
+        this.channel = ctx.channel();
     }
 }

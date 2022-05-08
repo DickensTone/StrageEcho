@@ -2,7 +2,7 @@ package com.echo.client.service.transportLog;
 
 import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.schedule.dumpInterface.DumpAgent;
-import com.echo.core.utils.SingletonUtil;
+import com.echo.core.components.SingletonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;

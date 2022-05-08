@@ -1,5 +1,5 @@
 package com.echo.io.env;
 
-public interface SystemProperty {
-    String defaultSyncPath = "\\echo\\Sync";
+public class SystemProperty {
+    public static final String defaultSyncPath = "\\echo\\Sync";
 }

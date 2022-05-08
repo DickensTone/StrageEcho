@@ -2,7 +2,7 @@ package com.echo.client.service.transportLog;
 
 import com.echo.client.domain.Transport;
 import com.echo.client.repository.ServiceLog;
-import com.echo.core.utils.SingletonUtil;
+import com.echo.core.components.SingletonUtil;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

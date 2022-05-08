@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>echo</artifactId>
-        <groupId>org.example</groupId>
+        <groupId>com.echo</groupId>
         <version>1.0.1FST</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -24,12 +24,6 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-handler</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>core</artifactId>
-            <version>1.0.1FST</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -52,6 +46,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.echo</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.1FST</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

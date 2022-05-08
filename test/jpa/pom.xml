@@ -5,8 +5,8 @@
 
 
     <parent>
+        <groupId>com.echo</groupId>
         <artifactId>test</artifactId>
-        <groupId>org.example</groupId>
         <version>1.0.1FST</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
