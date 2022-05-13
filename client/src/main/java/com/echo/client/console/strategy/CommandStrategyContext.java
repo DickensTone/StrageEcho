@@ -8,8 +8,7 @@ import java.util.Map;
 @Component
 public class CommandStrategyContext {
 
-
-    private static Map<String, CommandHandler> strategyMap = new HashMap<>();
+    private static final Map<String, CommandHandler> strategyMap = new HashMap<>();
 
     /**
      *  get a Strategy to handle command from cache;
@@ -17,12 +16,11 @@ public class CommandStrategyContext {
      * @return command handling's Strategy
      */
     public static CommandHandler getStrategy(String command) {
-
         return strategyMap.get(command);
     }
 
     /**
-     *
+     * register the handler to StrategyMap.
      * @param name strategy's name
      * @param handler strategy's instance
      */

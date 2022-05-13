@@ -1,4 +1,4 @@
-package com.echo.client.encoder;
+package com.echo.client.netty.encoder;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

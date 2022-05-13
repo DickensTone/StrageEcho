@@ -17,6 +17,7 @@ public class DataBaseContextHolder {
         return CONTEXT.get();
     }
 
+    @SuppressWarnings("unused")
     public static void clear() {
         CONTEXT.remove();
     }

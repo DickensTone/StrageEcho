@@ -1,7 +1,9 @@
-package com.echo.client.echoCilent;
+package com.echo.client.netty;
 
 
-import com.echo.client.encoder.EchoEncoder;
+import com.echo.client.netty.handler.EchoClientHandler;
+import com.echo.client.netty.encoder.EchoEncoder;
+import com.echo.client.netty.initializer.EchoClientInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -22,7 +24,6 @@ public class EchoClient {
     private final int port;
 
     private EchoClientHandler echoClientHandler;
-
 
     public void setEchoClientHandler(EchoClientHandler echoClientHandler){
         this.echoClientHandler = echoClientHandler;
@@ -51,11 +52,10 @@ public class EchoClient {
                             ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
                                     Unpooled.wrappedBuffer("@@".getBytes())));
                             ch.pipeline().addLast(new EchoEncoder());
-                            ch.pipeline().addLast(echoClientHandler);
+                            ch.pipeline().addLast(new EchoClientInitializer());
                         }
                     });
             ChannelFuture f = b.connect(host, port).sync();
-
         } finally {
             group.shutdownGracefully().sync();
         }

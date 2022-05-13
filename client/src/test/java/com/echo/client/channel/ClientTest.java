@@ -2,7 +2,7 @@ package com.echo.client.channel;
 
 import com.echo.client.config.databaseConfig.DataBaseContextHolder;
 import com.echo.client.domain.Transport;
-import com.echo.client.echoCilent.EchoClientHandler;
+import com.echo.client.netty.handler.EchoClientHandler;
 import com.echo.client.enums.DataBaseType;
 import com.echo.client.repository.ServiceLog;
 import com.echo.client.service.transportLog.WriteQueue;
@@ -33,8 +33,7 @@ public class ClientTest {
     public void test() throws InterruptedException {
         ByteBuf buf = Unpooled.copiedBuffer("This 23:30", StandardCharsets.UTF_8);
 
-        EmbeddedChannel embeddedChannel = new EmbeddedChannel(new EchoClientHandler.
-                Builder(writeQueue, "helloWorld").build());
+        EmbeddedChannel embeddedChannel = new EmbeddedChannel( EchoClientHandler.getBuilder(writeQueue).build());
 
         embeddedChannel.writeInbound(buf.retain());
         DataBaseContextHolder.set(DataBaseType.Embedded);

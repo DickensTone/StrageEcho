@@ -16,7 +16,6 @@
 package com.echo.server.fileserver;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.echo.server.configuration.NacosConfig;
 import com.echo.server.encoder.EchoEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.Unpooled;
@@ -32,22 +31,27 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
  * Server that accept the path of a file an echo back its content.
  */
+@Slf4j
 @Service
 public final class FileServer {
-    
     @NacosValue(value = "${server.port:8787}", autoRefreshed = true)
-    public int port;
+    private int port;
 
+    public void setPort(int port){
+        this.port = port;
+    }
 
     public void start() throws Exception {
         // Configure the server.
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+        log.info("port is {}", port);
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -68,10 +72,10 @@ public final class FileServer {
                              new FileServerHandler());
                  }
              });
-
             // Start the server.
             ChannelFuture f = b.bind(port).sync();
-
+            System.out.println(FileServer.class.getName() +
+                    " started and listening for connections on " + f.channel().localAddress());
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();
         } finally {

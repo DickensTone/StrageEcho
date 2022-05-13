@@ -27,7 +27,7 @@ public class JpaDataBaseConfiguration {
     public DataSource embeddedDataSource() {
         return new EmbeddedDatabaseBuilder().//
                 setType(EmbeddedDatabaseType.HSQL).//
-                setName("servicelog").//
+                setName("service-log").//
                 build();
     }
 

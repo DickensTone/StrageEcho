@@ -1,7 +1,6 @@
-package com.echo.client.echoCilent;
+package com.echo.client.netty.handler;
 
 
-import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -9,11 +8,8 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.io.PrintWriter;
-import java.util.Objects;
 
 /**
  * Listing 2.3 ChannelHandler for the client
@@ -26,7 +22,6 @@ public class EchoClientHandler
     private final StringBuffer sb = new StringBuffer();
     private final PrintWriter pw = new PrintWriter(System.out);
 
-    final String sendMessage;
 
     private final WriteQueue writeQueue;
 
@@ -35,7 +30,7 @@ public class EchoClientHandler
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer(this.sendMessage,
+        ctx.writeAndFlush(Unpooled.copiedBuffer("Hello, This is client",
                 CharsetUtil.UTF_8));
     }
 
@@ -56,15 +51,18 @@ public class EchoClientHandler
         cause.printStackTrace();
     }
 
+    public static Builder getBuilder(WriteQueue writeQueue){
+        return new Builder(writeQueue);
+    }
+
     //Builder Mode
     public static class Builder{
         private final WriteQueue writeQueue;
-        private final String sendMessage;
 
-        public Builder(WriteQueue writeQueue, String sendMessage){
+        private Builder(WriteQueue writeQueue){
             this.writeQueue = writeQueue;
-            this.sendMessage = sendMessage;
         }
+
 
         public EchoClientHandler build(){
             return new EchoClientHandler(this);
@@ -73,7 +71,6 @@ public class EchoClientHandler
 
     private EchoClientHandler(Builder builder){
         this.writeQueue = builder.writeQueue;
-        this.sendMessage = builder.sendMessage;
     }
 
     @Override
