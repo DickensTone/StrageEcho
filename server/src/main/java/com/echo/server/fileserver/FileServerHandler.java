@@ -20,14 +20,9 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.DefaultFileRegion;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.handler.stream.ChunkedFile;
 import io.netty.util.CharsetUtil;
 
-import java.io.RandomAccessFile;
-import java.nio.charset.StandardCharsets;
 
 public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
@@ -39,30 +34,30 @@ public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx,  ByteBuf msg) throws Exception {
-        RandomAccessFile raf = null;
-        long length = -1;
-        try {
-            raf = new RandomAccessFile(msg.toString(StandardCharsets.UTF_8), "r");
-            length = raf.length();
-        } catch (Exception e) {
-            ctx.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
-            return;
-        } finally {
-            if (length < 0 && raf != null) {
-                raf.close();
-            }
-        }
-
-        ctx.write("OK: " + raf.length() + '\n');
-        if (ctx.pipeline().get(SslHandler.class) == null) {
-            // SSL not enabled - can use zero-copy file transfer.
-            ctx.write(new DefaultFileRegion(raf.getChannel(), 0, length));
-        } else {
-            // SSL enabled - cannot use zero-copy file transfer.
-            ctx.write(new ChunkedFile(raf));
-        }
-        ctx.writeAndFlush(Unpooled.copiedBuffer("complete\n",CharsetUtil.UTF_8));
-        ctx.close();
+//        RandomAccessFile raf = null;
+//        long length = -1;
+//        try {
+//            raf = new RandomAccessFile(msg.toString(StandardCharsets.UTF_8), "r");
+//            length = raf.length();
+//        } catch (Exception e) {
+//            ctx.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
+//            return;
+//        } finally {
+//            if (length < 0 && raf != null) {
+//                raf.close();
+//            }
+//        }
+//
+//        ctx.write("OK: " + raf.length() + '\n');
+//        if (ctx.pipeline().get(SslHandler.class) == null) {
+//            // SSL not enabled - can use zero-copy file transfer.
+//            ctx.write(new DefaultFileRegion(raf.getChannel(), 0, length));
+//        } else {
+//            // SSL enabled - cannot use zero-copy file transfer.
+//            ctx.write(new ChunkedFile(raf));
+//        }
+//        ctx.writeAndFlush(Unpooled.copiedBuffer("complete\n",CharsetUtil.UTF_8));
+//        ctx.close();
     }
 
     @Override

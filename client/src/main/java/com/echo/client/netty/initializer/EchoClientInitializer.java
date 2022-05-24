@@ -8,7 +8,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 
-public class EchoClientInitializer extends ChannelInitializer<SocketChannel> {
+public class  EchoClientInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,

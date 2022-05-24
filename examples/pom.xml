@@ -12,12 +12,7 @@
     <artifactId>examples</artifactId>
     <dependencies>
 
-        <dependency>
-            <groupId>com.echo</groupId>
-            <artifactId>IO</artifactId>
-            <version>1.0.1FST</version>
-            <scope>compile</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.echo</groupId>
             <artifactId>client</artifactId>

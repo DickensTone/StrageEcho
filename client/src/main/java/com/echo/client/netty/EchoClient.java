@@ -46,15 +46,7 @@ public class EchoClient {
             Bootstrap b = new Bootstrap();
             b.group(group)
                     .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        public void initChannel(SocketChannel ch) {
-                            ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
-                                    Unpooled.wrappedBuffer("@@".getBytes())));
-                            ch.pipeline().addLast(new EchoEncoder());
-                            ch.pipeline().addLast(new EchoClientInitializer());
-                        }
-                    });
+                    .handler(new EchoClientInitializer());
             ChannelFuture f = b.connect(host, port).sync();
         } finally {
             group.shutdownGracefully().sync();

@@ -1,6 +1,7 @@
 package com.echo.client.config;
 
 import com.echo.client.console.MainConsole;
+import org.springframework.boot.SpringApplicationRunListener;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

@@ -31,13 +31,12 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.CharsetUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
  * Server that accept the path of a file an echo back its content.
  */
-@Slf4j
+
 @Service
 public final class FileServer {
     @NacosValue(value = "${server.port:8787}", autoRefreshed = true)
@@ -51,7 +50,6 @@ public final class FileServer {
         // Configure the server.
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        log.info("port is {}", port);
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
