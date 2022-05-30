@@ -1,7 +1,7 @@
 package com.echo.client.console.strategy;
 
 import com.echo.client.netty.EchoClient;
-import com.echo.client.netty.handler.EchoClientHandler;
+import com.echo.client.netty.handler.impl.EchoClientHandler;
 import com.echo.client.service.transportLog.WriteQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

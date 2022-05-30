@@ -1,4 +1,4 @@
-package com.echo.client.netty.handler;
+package com.echo.client.netty.handler.impl;
 
 
 import com.echo.client.service.transportLog.WriteQueue;
@@ -8,7 +8,6 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
-import org.springframework.stereotype.Component;
 
 import java.io.PrintWriter;
 

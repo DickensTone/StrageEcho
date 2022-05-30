@@ -1,22 +1,31 @@
 package com.echo.client.config;
 
 import com.echo.client.console.MainConsole;
-import org.springframework.boot.SpringApplicationRunListener;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @Component
-public class MainThreadInit {
+public class MainThreadInit  implements ApplicationRunner {
 
-    @PostConstruct
-    public void init(){
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
         MainConsole console = new MainConsole();
-        console.setInput(System.in);
-        Thread t = new Thread(console);
-        t.setDaemon(false);
-        t.setName("Main-Console");
-        t.start();
+        ExecutorService executor = new ThreadPoolExecutor(1, 1,
+                10, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(1),
+                r->{
+                    Thread t = new Thread(r,"MainConsole");
+                    if(t.isDaemon()){
+                        t.setDaemon(false);
+                    }
+                    return  t;
+                });
+        executor.execute(new MainConsole());
     }
 }

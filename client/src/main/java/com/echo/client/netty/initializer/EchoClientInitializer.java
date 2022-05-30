@@ -1,7 +1,7 @@
 package com.echo.client.netty.initializer;
 
 import com.echo.client.netty.encoder.EchoEncoder;
-import com.echo.client.netty.handler.EchoClientHandler;
+import com.echo.client.netty.handler.impl.EchoClientHandler;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelInitializer;

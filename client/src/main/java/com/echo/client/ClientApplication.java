@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class  ClientApplication {
     public static void main(String[] args) {
-        log.info("first logback");
         SpringApplication.run(ClientApplication.class);
     }
 }

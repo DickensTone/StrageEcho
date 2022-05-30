@@ -2,7 +2,7 @@ package com.echo.client.channel;
 
 import com.echo.client.config.databaseConfig.DataBaseContextHolder;
 import com.echo.client.domain.Transport;
-import com.echo.client.netty.handler.EchoClientHandler;
+import com.echo.client.netty.handler.impl.EchoClientHandler;
 import com.echo.client.enums.DataBaseType;
 import com.echo.client.repository.ServiceLog;
 import com.echo.client.service.transportLog.WriteQueue;
