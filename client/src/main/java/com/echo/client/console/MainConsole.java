@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 
 @Slf4j
-public class MainConsole implements Runnable{
+public class MainConsole implements Runnable {
 
     private InputStream input = System.in;
 
@@ -19,30 +19,31 @@ public class MainConsole implements Runnable{
      * read command from console.
      * handle the command.
      */
-    public void readCommand() throws IOException {
-        try (BufferedReader sc = new BufferedReader(new InputStreamReader(new FilterInputStream(this.input){
-            @Override
-            public void close(){
-                // avoiding closing System.in when closing the opened BufferReader
-            }
-        }))) {
+    public void readCommand() {
+        try (BufferedReader sc = new BufferedReader(new InputStreamReader(
+                new FilterInputStream(this.input) {
+                    @Override
+                    public void close() {
+                        // avoiding closing System.in when closing the opened BufferReader
+                    }
+                }))) {
             String commandLine = sc.readLine();
             String[] commands = commandLine.split(" ");
 
             //TODO change System.out,println to System's outStream
-            if(commands.length != 3){
+            if (commands.length != 3) {
                 System.out.println("Please input:echo [command] [address]");
                 return;
             }
-            if(!commands[0].equals("echo")){
-                System.out.println("command not found  "+commands[0]);
+            if (!commands[0].equals("echo")) {
+                System.out.println("command not found  " + commands[0]);
                 return;
             }
 
             CommandHandler strategy = CommandStrategyContext.getStrategy(commands[1]);
             strategy.handle(commands.length, commands);
         } catch (Exception e) {
-            log.error("",e);
+            log.error("", e);
         }
 
     }
@@ -52,7 +53,7 @@ public class MainConsole implements Runnable{
         while (true) {
             try {
                 readCommand();
-            }catch (Exception e){
+            } catch (Exception e) {
                 break;
             }
         }

@@ -25,9 +25,9 @@ import java.util.Map;
 public class JpaDataBaseConfiguration {
     @Bean
     public DataSource embeddedDataSource() {
-        return new EmbeddedDatabaseBuilder().//
-                setType(EmbeddedDatabaseType.HSQL).//
-                setName("service-log").//
+        return new EmbeddedDatabaseBuilder().
+                setType(EmbeddedDatabaseType.HSQL).
+                setName("service-log").
                 build();
     }
 

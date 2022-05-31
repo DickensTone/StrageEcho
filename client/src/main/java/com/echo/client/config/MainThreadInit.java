@@ -14,8 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class MainThreadInit  implements ApplicationRunner {
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
-        MainConsole console = new MainConsole();
+    public void run(ApplicationArguments args) {
         ExecutorService executor = new ThreadPoolExecutor(1, 1,
                 10, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(1),

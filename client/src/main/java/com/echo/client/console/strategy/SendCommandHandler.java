@@ -18,14 +18,11 @@ public class SendCommandHandler implements CommandHandler{
         this.writeQueue = writeQueue;
     }
 
-
     private WriteQueue writeQueue;
 
     public SendCommandHandler(){
 
     }
-
-
 
     @PostConstruct
     public void register(){
@@ -47,6 +44,5 @@ public class SendCommandHandler implements CommandHandler{
             e.printStackTrace();
         }
     }
-
 
 }
