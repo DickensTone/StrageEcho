@@ -2,24 +2,21 @@ package com.echo.client.channel;
 
 import com.echo.client.config.databaseConfig.DataBaseContextHolder;
 import com.echo.client.domain.Transport;
-import com.echo.client.netty.handler.impl.EchoClientHandler;
 import com.echo.client.enums.DataBaseType;
+import com.echo.client.netty.handler.impl.EchoClientHandler;
 import com.echo.client.repository.ServiceLog;
 import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.nio.charset.StandardCharsets;
 
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class ClientTest {
 
     @Autowired
