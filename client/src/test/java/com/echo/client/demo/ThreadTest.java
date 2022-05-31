@@ -1,10 +1,7 @@
 package com.echo.client.demo;
 
-import com.echo.client.console.MainConsole;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.*;
 
 import static java.util.concurrent.TimeUnit.HOURS;

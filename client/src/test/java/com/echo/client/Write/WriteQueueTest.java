@@ -4,15 +4,12 @@ import com.echo.client.repository.ServiceLog;
 import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.service.transportLog.WriteQueue;
 import com.echo.client.service.transportLog.WriteWorker;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class WriteQueueTest {
     @Autowired
     private WriteQueue writeQueue;
@@ -39,8 +36,8 @@ public class WriteQueueTest {
             Thread.sleep(2000);
         }
 
-        Assert.assertFalse(writeAgent.isRunning());
-        Assert.assertFalse(writeQueue.needDump());
+        Assertions.assertFalse(writeAgent.isRunning());
+        Assertions.assertFalse(writeQueue.needDump());
     }
 
     @Test
