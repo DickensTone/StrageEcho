@@ -2,7 +2,7 @@ package com.echo.client.netty;
 
 
 import com.echo.client.cache.CacheFactory;
-import com.echo.client.netty.handler.impl.EchoClientHandler;
+import com.echo.client.netty.handler.EchoClientHandler;
 import com.echo.client.netty.initializer.EchoClientInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

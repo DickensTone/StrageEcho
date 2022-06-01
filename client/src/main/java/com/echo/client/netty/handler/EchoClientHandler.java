@@ -1,4 +1,4 @@
-package com.echo.client.netty.handler.impl;
+package com.echo.client.netty.handler;
 
 
 import com.echo.client.service.transportLog.WriteQueue;
@@ -21,7 +21,6 @@ public class EchoClientHandler
         extends SimpleChannelInboundHandler<ByteBuf> {
     private final StringBuffer sb = new StringBuffer();
     private final PrintWriter pw = new PrintWriter(System.out);
-
 
     private final WriteQueue writeQueue;
 
@@ -62,7 +61,6 @@ public class EchoClientHandler
         private Builder(WriteQueue writeQueue){
             this.writeQueue = writeQueue;
         }
-
 
         public EchoClientHandler build(){
             return new EchoClientHandler(this);

@@ -1,13 +1,9 @@
 package com.echo.client.service.transportLog;
 
-import com.echo.client.schedule.LogWriteAgent;
 import com.echo.client.schedule.dumpInterface.DumpAgent;
 import com.echo.core.components.SingletonUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.PostConstruct;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingDeque;
 
@@ -24,19 +20,6 @@ public class WriteQueue {
 
     private final Set<DumpAgent> dumpAgent;
 
-    private LogWriteAgent logWriteAgent;
-
-    @Autowired
-    public void setLogWriteAgent(LogWriteAgent logWriteAgent) {
-        this.logWriteAgent = logWriteAgent;
-    }
-
-    @PostConstruct
-    public void initAgent(){
-        Objects.requireNonNull(logWriteAgent);
-        registerListener(logWriteAgent);
-    }
-
     private WriteQueue(){
         dumpAgent = new HashSet<>();
     }
@@ -47,7 +30,6 @@ public class WriteQueue {
      */
     public void addContent(StringBuffer sb){
         queue.offer(sb);
-        this.invokeDumpEvent();
     }
 
     /**

@@ -3,56 +3,55 @@ package com.echo.client.service.transportLog;
 import com.echo.client.domain.Transport;
 import com.echo.client.repository.ServiceLog;
 import com.echo.core.components.SingletonUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 @Service
-public class WriteWorker implements Runnable {
+@Slf4j
+public class WriteWorker {
 
     private final ServiceLog serviceLog;
 
-    public WriteWorker(ServiceLog serviceLog){
+    public WriteWorker(ServiceLog serviceLog) {
         this.serviceLog = serviceLog;
     }
 
-    private volatile boolean canceled = false;
-    private volatile Future<?> future;
+    private volatile boolean isRunning = false;
 
 
-    public final void cancel() {
-        if (this.future != null) {
-            future.cancel(false);
+    @Scheduled(initialDelay = 1, fixedDelay = 20, timeUnit = TimeUnit.MINUTES)
+    public void run() {
+
+        if (isRunning) {
+            return;
         }
-    }
 
+        isRunning = true;
 
-    public final void setFuture(Future<?> future) {
-        this.future = future;
-        this.canceled = false;
-    }
+        log.debug("dump the queue's data");
+        int cnt = 0;
+        try {
+            while (!SingletonUtil.linkedBlockingDeque.isEmpty()) {
+                // make the queue as a blocking queue.
+                StringBuffer sb = SingletonUtil.linkedBlockingDeque.poll();
+                if (sb != null) {
+                    Transport transport = new Transport();
+                    transport.setContent(sb);
+                    transport.setCreateTime(Instant.now());
+                    transport.setModifyTime(Instant.now());
 
-    public final boolean isCanceled() {
-
-        return canceled;
-    }
-
-    @Override
-    public void run()   {
-        if(!SingletonUtil.linkedBlockingDeque.isEmpty()) {
-            // make the queue as a blocking queue.
-            StringBuffer sb = SingletonUtil.linkedBlockingDeque.poll();
-            if (sb != null) {
-                Transport transport = new Transport();
-                transport.setContent(sb);
-                transport.setCreateTime(Instant.now());
-                transport.setModifyTime(Instant.now());
-
-                serviceLog.save(transport);
+                    serviceLog.save(transport);
+                }
+                cnt++;
             }
-        }else {
-            cancel();
+        } finally {
+            isRunning = false;
         }
+        log.debug("dump data finished, the total number = {}", cnt);
     }
 }
