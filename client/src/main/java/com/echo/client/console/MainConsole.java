@@ -41,6 +41,10 @@ public class MainConsole implements Runnable {
             }
 
             CommandHandler strategy = CommandStrategyContext.getStrategy(commands[1]);
+            if(strategy == null){
+                System.out.println("command  not recognized");
+                return;
+            }
             strategy.handle(commands.length, commands);
         } catch (Exception e) {
             log.error("", e);

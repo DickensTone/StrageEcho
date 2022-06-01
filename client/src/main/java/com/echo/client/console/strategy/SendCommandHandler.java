@@ -1,8 +1,9 @@
 package com.echo.client.console.strategy;
 
+import com.echo.client.cache.CacheFactory;
 import com.echo.client.netty.EchoClient;
-import com.echo.client.netty.handler.EchoClientHandler;
 import com.echo.client.service.transportLog.WriteQueue;
+import io.netty.channel.ChannelFuture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +38,12 @@ public class SendCommandHandler implements CommandHandler{
      */
     @Override
     public void handle(int argv, String[] args) {
-        client.setEchoClientHandler(EchoClientHandler.getBuilder(writeQueue).build());
         try {
             client.start();
+            ChannelFuture future = CacheFactory.getHandlerFuture().get("handler");
+
+            future.channel().write("hello, this is strategy");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

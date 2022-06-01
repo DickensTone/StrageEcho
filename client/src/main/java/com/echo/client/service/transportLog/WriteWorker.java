@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -25,7 +24,7 @@ public class WriteWorker {
 
 
     @Scheduled(initialDelay = 1, fixedDelay = 20, timeUnit = TimeUnit.MINUTES)
-    public void run() {
+    private void run() {
 
         if (isRunning) {
             return;

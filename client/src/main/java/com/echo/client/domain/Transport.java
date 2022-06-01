@@ -19,6 +19,7 @@ public class Transport {
     )
     private String Id;
 
+    @Column(columnDefinition="varchar(2048)")
     private String content;
     private Instant createTime;
     private Instant modifyTime;
@@ -31,11 +32,11 @@ public class Transport {
         Id = id;
     }
 
+
     public String getContent() {
         return content;
     }
 
-    @Column(columnDefinition="varchar(2048)")
     public void setContent(StringBuffer content) {
         this.content = content.toString();
     }
