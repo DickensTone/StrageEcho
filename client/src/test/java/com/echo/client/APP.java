@@ -18,18 +18,18 @@ public class APP {
 
     @Test
     public void UserJPATest(){
-        Transport transport = new Transport();
+
         String id = "90087";
 
         Optional<Transport> userOptional = serviceLog.findById(id);
         userOptional.ifPresent(u->serviceLog.deleteById(id));
-
-
+        Transport transport = new Transport();
         transport.setModifyTime(Instant.now());
         transport.setCreateTime(Instant.now());
         transport = serviceLog.save(transport);
 
         userOptional = serviceLog.findById(transport.getId());
+        serviceLog.delete(transport);
         Assertions.assertTrue(userOptional.isPresent());
         Assertions.assertEquals(transport.getId(), userOptional.get().getId());
     }

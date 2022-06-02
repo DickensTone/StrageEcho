@@ -2,9 +2,7 @@ package com.echo.client.console.strategy;
 
 import com.echo.client.cache.CacheFactory;
 import com.echo.client.netty.EchoClient;
-import com.echo.client.service.transportLog.WriteQueue;
 import io.netty.channel.ChannelFuture;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -13,13 +11,6 @@ import javax.annotation.PostConstruct;
 public class SendCommandHandler implements CommandHandler{
 
     private final EchoClient client = new EchoClient("localhost", 8550);
-
-    @Autowired
-    public void setWriteQueue(WriteQueue writeQueue) {
-        this.writeQueue = writeQueue;
-    }
-
-    private WriteQueue writeQueue;
 
     public SendCommandHandler(){
 

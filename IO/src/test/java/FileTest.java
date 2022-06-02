@@ -1,8 +1,8 @@
 import com.echo.io.env.SystemProperty;
 import com.echo.io.file.EchoFileWriter;
 import com.echo.io.file.FileWorker;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
@@ -36,7 +36,7 @@ public class FileTest {
             System.out.println(file.mkdirs());
         }
 
-        Assert.assertTrue(file.exists());
+        Assertions.assertTrue(file.exists());
 
     }
 }
