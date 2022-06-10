@@ -3,11 +3,13 @@ package com.echo.client.console.strategy;
 import com.echo.client.cache.CacheFactory;
 import com.echo.client.netty.EchoClient;
 import io.netty.channel.ChannelFuture;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
 @Service
+@Slf4j
 public class SendCommandHandler implements CommandHandler{
 
     private final EchoClient client = new EchoClient("localhost", 8550);
@@ -30,11 +32,8 @@ public class SendCommandHandler implements CommandHandler{
     @Override
     public void handle(int argv, String[] args) {
         try {
+            client.setCommand(args[0]);
             client.start();
-            ChannelFuture future = CacheFactory.getHandlerFuture().get("handler");
-
-            future.channel().write("hello, this is strategy");
-
         } catch (Exception e) {
             e.printStackTrace();
         }

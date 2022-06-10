@@ -61,13 +61,8 @@ public final class FileServer {
                  public void initChannel(SocketChannel ch) {
                      ChannelPipeline p = ch.pipeline();
                      p.addLast(
-                             new StringEncoder(CharsetUtil.UTF_8),
-                             new DelimiterBasedFrameDecoder(1024, Unpooled.wrappedBuffer("@@".getBytes())),
-                             new LineBasedFrameDecoder(8192),
-                             new EchoEncoder(),
-                             new StringDecoder(CharsetUtil.UTF_8),
-                             new ChunkedWriteHandler(),
                              new FileServerHandler());
+
                  }
              });
             // Start the server.

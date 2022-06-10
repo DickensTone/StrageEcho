@@ -22,8 +22,12 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
+
+import java.nio.charset.StandardCharsets;
 
 
+@Slf4j
 public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
@@ -33,7 +37,9 @@ public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
     }
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx,  ByteBuf msg) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx,  ByteBuf msg) {
+        System.out.println(msg.toString(StandardCharsets.UTF_8));
+        log.info(msg.toString(StandardCharsets.UTF_8));
 //        RandomAccessFile raf = null;
 //        long length = -1;
 //        try {

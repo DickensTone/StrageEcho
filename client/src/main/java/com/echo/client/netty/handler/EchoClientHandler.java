@@ -26,6 +26,8 @@ public class EchoClientHandler
 
     private Channel channel;
 
+    private String command;
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -37,6 +39,8 @@ public class EchoClientHandler
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
         pw.println(in.toString(CharsetUtil.UTF_8));
         pw.flush();
+        ctx.writeAndFlush(Unpooled.copiedBuffer(command,
+                CharsetUtil.UTF_8));
 //
 //        sb.setLength(0);
 //        sb.append(in.toString(CharsetUtil.UTF_8));
@@ -58,12 +62,21 @@ public class EchoClientHandler
     public static class Builder{
         private final WriteQueue writeQueue;
 
+        private String command;
+
         private Builder(WriteQueue writeQueue){
             this.writeQueue = writeQueue;
         }
 
         public EchoClientHandler build(){
-            return new EchoClientHandler(this);
+            EchoClientHandler handler = new EchoClientHandler(this);
+            handler.command = command;
+            return handler;
+        }
+
+        public Builder setCommand(String command){
+            this.command = command;
+            return this;
         }
     }
 

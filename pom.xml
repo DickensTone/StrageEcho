@@ -82,7 +82,7 @@
     <properties>
         <tomcat-embed-jasper.version>9.0.40</tomcat-embed-jasper.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <reflections.version>0.9.12</reflections.version>
+        <reflections.version>0.9.11</reflections.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockito-core.version>3.8.0</mockito-core.version>
         <nacos-spring-context.version>1.1.0</nacos-spring-context.version>

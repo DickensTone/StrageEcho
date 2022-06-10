@@ -25,14 +25,6 @@ public class WriteQueue {
     }
 
     /**
-     * add the content to queue.
-     * @param sb ready to write
-     */
-    public void addContent(StringBuffer sb){
-        queue.offer(sb);
-    }
-
-    /**
      *
      * invoke the agent event when the addContent is called.
      */
@@ -40,22 +32,6 @@ public class WriteQueue {
         for(DumpAgent agent : dumpAgent){
             agent.start();
         }
-    }
-
-    /**
-     * get the last Object of the queue.
-     * <h3>Attention</h3>
-     * Every time invoke this method, the queue will reduce the object that return.
-     *
-     *
-     * @return content in the queue.
-     */
-    public StringBuffer getContent(){
-        return queue.poll();
-    }
-
-    public boolean needDump()  {
-        return !queue.isEmpty();
     }
 
     /**
