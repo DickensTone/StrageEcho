@@ -5,15 +5,28 @@
     <parent>
         <artifactId>examples</artifactId>
         <groupId>com.echo</groupId>
-        <version>1.0.1FST</version>
+        <version>1.0.1Alpha</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>nacosExample</artifactId>
 
-    <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-    </properties>
+    <dependencies>
 
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 </project>

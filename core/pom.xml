@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.echo</groupId>
         <artifactId>echo</artifactId>
-        <version>1.0.1FST</version>
+        <version>1.0.1Alpha</version>
     </parent>
 
 

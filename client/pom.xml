@@ -5,7 +5,7 @@
     <parent>
         <artifactId>echo</artifactId>
         <groupId>com.echo</groupId>
-        <version>1.0.1FST</version>
+        <version>1.0.1Alpha</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.echo</groupId>
             <artifactId>core</artifactId>
-            <version>1.0.1FST</version>
+            <version>1.0.1Alpha</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
