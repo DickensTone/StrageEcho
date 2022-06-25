@@ -14,7 +14,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ConfigCenter" />
         <module name="server" />
         <module name="client" />
         <module name="core" />
@@ -43,6 +42,7 @@
     <file url="file://$PROJECT_DIR$/core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/nacosExample/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/examples/nacosExample/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server/src/main/java" charset="UTF-8" />
@@ -107,6 +107,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/configcenter/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="Palette2">
@@ -232,7 +237,6 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/configcenter/ConfigCenter.iml" filepath="$PROJECT_DIR$/configcenter/ConfigCenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/IO/IO.iml" filepath="$PROJECT_DIR$/IO/IO.iml" />
       <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
@@ -440,17 +444,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.code.gson:gson:2.9.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/gson/gson/2.9.0/gson-2.9.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/gson/gson/2.9.0/gson-2.9.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/gson/gson/2.9.0/gson-2.9.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.errorprone:error_prone_annotations:2.3.4">

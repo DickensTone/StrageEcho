@@ -24,8 +24,6 @@ public class EchoClientHandler
 
     private final WriteQueue writeQueue;
 
-    private Channel channel;
-
     private String command;
 
 
@@ -41,11 +39,6 @@ public class EchoClientHandler
         pw.flush();
         ctx.writeAndFlush(Unpooled.copiedBuffer(command,
                 CharsetUtil.UTF_8));
-//
-//        sb.setLength(0);
-//        sb.append(in.toString(CharsetUtil.UTF_8));
-//        // need to new an Object for avoiding overwrite the StringBuffer offered to queue.
-//        writeQueue.addContent(new StringBuffer(sb));
     }
 
     @Override
@@ -87,6 +80,5 @@ public class EchoClientHandler
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         super.channelRegistered(ctx);
-        this.channel = ctx.channel();
     }
 }

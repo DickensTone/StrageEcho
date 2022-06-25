@@ -1,6 +1,6 @@
 package com.echo.client.config.databaseConfig;
 
-import com.echo.client.enums.DataBaseType;
+import com.echo.client.domain.enums.DataBaseType;
 import org.springframework.util.Assert;
 
 public class DataBaseContextHolder {

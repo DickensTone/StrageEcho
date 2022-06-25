@@ -1,7 +1,7 @@
 package com.echo.client.config.databaseConfig;
 
 import com.echo.client.domain.Transport;
-import com.echo.client.enums.DataBaseType;
+import com.echo.client.domain.enums.DataBaseType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
