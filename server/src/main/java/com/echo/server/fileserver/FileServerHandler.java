@@ -38,32 +38,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx,  ByteBuf msg) {
-        System.out.println(msg.toString(StandardCharsets.UTF_8));
-        log.info(msg.toString(StandardCharsets.UTF_8));
-//        RandomAccessFile raf = null;
-//        long length = -1;
-//        try {
-//            raf = new RandomAccessFile(msg.toString(StandardCharsets.UTF_8), "r");
-//            length = raf.length();
-//        } catch (Exception e) {
-//            ctx.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
-//            return;
-//        } finally {
-//            if (length < 0 && raf != null) {
-//                raf.close();
-//            }
-//        }
-//
-//        ctx.write("OK: " + raf.length() + '\n');
-//        if (ctx.pipeline().get(SslHandler.class) == null) {
-//            // SSL not enabled - can use zero-copy file transfer.
-//            ctx.write(new DefaultFileRegion(raf.getChannel(), 0, length));
-//        } else {
-//            // SSL enabled - cannot use zero-copy file transfer.
-//            ctx.write(new ChunkedFile(raf));
-//        }
-//        ctx.writeAndFlush(Unpooled.copiedBuffer("complete\n",CharsetUtil.UTF_8));
-//        ctx.close();
+        ctx.writeAndFlush(msg);
     }
 
     @Override

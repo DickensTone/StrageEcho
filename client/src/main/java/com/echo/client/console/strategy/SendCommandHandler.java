@@ -1,8 +1,6 @@
 package com.echo.client.console.strategy;
 
-import com.echo.client.cache.CacheFactory;
 import com.echo.client.netty.EchoClient;
-import io.netty.channel.ChannelFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

@@ -4,7 +4,10 @@ import com.echo.client.console.strategy.CommandHandler;
 import com.echo.client.console.strategy.CommandStrategyContext;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FilterInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @Slf4j
 public class MainConsole implements Runnable {

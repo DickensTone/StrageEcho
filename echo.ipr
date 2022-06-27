@@ -14,10 +14,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="server" />
         <module name="client" />
         <module name="core" />
-        <module name="server" />
-        <module name="nacosExample" />
         <module name="IO" />
       </profile>
     </annotationProcessing>
@@ -111,6 +110,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/configcenter/pom.xml" />
+        <option value="$PROJECT_DIR$/examples/nacosExample/pom.xml" />
       </set>
     </option>
   </component>
@@ -237,13 +237,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IO/IO.iml" filepath="$PROJECT_DIR$/IO/IO.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/examples/examples.iml" filepath="$PROJECT_DIR$/examples/examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/jpa/jpa.iml" filepath="$PROJECT_DIR$/test/jpa/jpa.iml" />
-      <module fileurl="file://$PROJECT_DIR$/examples/nacosExample/nacosExample.iml" filepath="$PROJECT_DIR$/examples/nacosExample/nacosExample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
   </component>
@@ -302,138 +296,6 @@
         <root url="jar://$PROJECT_DIR$/../../maven/resp/ch/qos/logback/logback-core/1.2.10/logback-core-1.2.10-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config:2021.0.1.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/cloud/spring-cloud-starter-alibaba-nacos-config/2021.0.1.0/spring-cloud-starter-alibaba-nacos-config-2021.0.1.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/cloud/spring-cloud-starter-alibaba-nacos-config/2021.0.1.0/spring-cloud-starter-alibaba-nacos-config-2021.0.1.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/cloud/spring-cloud-starter-alibaba-nacos-config/2021.0.1.0/spring-cloud-starter-alibaba-nacos-config-2021.0.1.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.alibaba.nacos:nacos-api:1.4.2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-api/1.4.2/nacos-api-1.4.2.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-api/1.4.2/nacos-api-1.4.2-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-api/1.4.2/nacos-api-1.4.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.alibaba.nacos:nacos-client:1.4.2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-client/1.4.2/nacos-client-1.4.2.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-client/1.4.2/nacos-client-1.4.2-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-client/1.4.2/nacos-client-1.4.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.alibaba.nacos:nacos-common:1.4.2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-common/1.4.2/nacos-common-1.4.2.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-common/1.4.2/nacos-common-1.4.2-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/nacos/nacos-common/1.4.2/nacos-common-1.4.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.alibaba.spring:spring-context-support:1.0.11">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/spring/spring-context-support/1.0.11/spring-context-support-1.0.11.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/spring/spring-context-support/1.0.11/spring-context-support-1.0.11-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/alibaba/spring/spring-context-support/1.0.11/spring-context-support-1.0.11-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.echo:core:1.0.1Alpha">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/echo/core/1.0.1Alpha/core-1.0.1Alpha.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/echo/core/1.0.1Alpha/core-1.0.1Alpha-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/echo/core/1.0.1Alpha/core-1.0.1Alpha-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-annotations/2.13.1/jackson-annotations-2.13.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-annotations/2.13.1/jackson-annotations-2.13.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-annotations/2.13.1/jackson-annotations-2.13.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-core/2.13.1/jackson-core-2.13.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-core/2.13.1/jackson-core-2.13.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-core/2.13.1/jackson-core-2.13.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.13.1/jackson-datatype-jdk8-2.13.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.13.1/jackson-datatype-jdk8-2.13.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.13.1/jackson-datatype-jdk8-2.13.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.13.1/jackson-datatype-jsr310-2.13.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.13.1/jackson-datatype-jsr310-2.13.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.13.1/jackson-datatype-jsr310-2.13.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.13.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/module/jackson-module-parameter-names/2.13.1/jackson-module-parameter-names-2.13.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/module/jackson-module-parameter-names/2.13.1/jackson-module-parameter-names-2.13.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/jackson/module/jackson-module-parameter-names/2.13.1/jackson-module-parameter-names-2.13.1-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: com.fasterxml:classmate:1.5.1">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar!/" />
@@ -443,72 +305,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/com/fasterxml/classmate/1.5.1/classmate-1.5.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.code.findbugs:jsr305:3.0.2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.errorprone:error_prone_annotations:2.3.4">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.guava:failureaccess:1.0.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.guava:guava:30.1-jre">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/guava/30.1-jre/guava-30.1-jre-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.google.j2objc:j2objc-annotations:1.3">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.jayway.jsonpath:json-path:2.6.0">
@@ -564,28 +360,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: commons-codec:commons-codec:1.15">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/commons-codec/commons-codec/1.15/commons-codec-1.15.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/commons-codec/commons-codec/1.15/commons-codec-1.15-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/commons-codec/commons-codec/1.15/commons-codec-1.15-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: commons-io:commons-io:2.7">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/commons-io/commons-io/2.7/commons-io-2.7.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/commons-io/commons-io/2.7/commons-io-2.7-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/commons-io/commons-io/2.7/commons-io-2.7-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: io.netty:netty-buffer:4.1.73.Final">
@@ -652,50 +426,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/io/netty/netty-transport/4.1.77.Final/netty-transport-4.1.77.Final-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: io.prometheus:simpleclient:0.12.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient/0.12.0/simpleclient-0.12.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient/0.12.0/simpleclient-0.12.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient/0.12.0/simpleclient-0.12.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: io.prometheus:simpleclient_tracer_common:0.12.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_common/0.12.0/simpleclient_tracer_common-0.12.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_common/0.12.0/simpleclient_tracer_common-0.12.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_common/0.12.0/simpleclient_tracer_common-0.12.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: io.prometheus:simpleclient_tracer_otel:0.12.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_otel/0.12.0/simpleclient_tracer_otel-0.12.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_otel/0.12.0/simpleclient_tracer_otel-0.12.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_otel/0.12.0/simpleclient_tracer_otel-0.12.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.12.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_otel_agent/0.12.0/simpleclient_tracer_otel_agent-0.12.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_otel_agent/0.12.0/simpleclient_tracer_otel_agent-0.12.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/io/prometheus/simpleclient_tracer_otel_agent/0.12.0/simpleclient_tracer_otel_agent-0.12.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: jakarta.activation:jakarta.activation-api:1.2.2">
@@ -808,50 +538,6 @@
         <root url="jar://$PROJECT_DIR$/../../maven/resp/net/minidev/json-smart/2.4.7/json-smart-2.4.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.5">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpasyncclient/4.1.5/httpasyncclient-4.1.5.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpasyncclient/4.1.5/httpasyncclient-4.1.5-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpasyncclient/4.1.5/httpasyncclient-4.1.5-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.apache.httpcomponents:httpclient:4.5.13">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.15">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpcore-nio/4.4.15/httpcore-nio-4.4.15.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpcore-nio/4.4.15/httpcore-nio-4.4.15-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpcore-nio/4.4.15/httpcore-nio-4.4.15-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.apache.httpcomponents:httpcore:4.4.15">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpcore/4.4.15/httpcore-4.4.15.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpcore/4.4.15/httpcore-4.4.15-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/httpcomponents/httpcore/4.4.15/httpcore-4.4.15-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.apache.logging.log4j:log4j-api:2.17.1">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1.jar!/" />
@@ -872,39 +558,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/logging/log4j/log4j-to-slf4j/2.17.1/log4j-to-slf4j-2.17.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.56">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-core/9.0.56/tomcat-embed-core-9.0.56.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-core/9.0.56/tomcat-embed-core-9.0.56-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-core/9.0.56/tomcat-embed-core-9.0.56-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.56">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-el/9.0.56/tomcat-embed-el-9.0.56.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-el/9.0.56/tomcat-embed-el-9.0.56-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-el/9.0.56/tomcat-embed-el-9.0.56-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.56">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.56/tomcat-embed-websocket-9.0.56.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.56/tomcat-embed-websocket-9.0.56-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.56/tomcat-embed-websocket-9.0.56-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.apiguardian:apiguardian-api:1.1.2">
@@ -938,17 +591,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/assertj/assertj-core/3.21.0/assertj-core-3.21.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.checkerframework:checker-qual:3.5.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.5">
@@ -1215,17 +857,6 @@
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-autoconfigure/2.6.3/spring-boot-autoconfigure-2.6.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.6.3">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-configuration-processor/2.6.3/spring-boot-configuration-processor-2.6.3.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-configuration-processor/2.6.3/spring-boot-configuration-processor-2.6.3-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-configuration-processor/2.6.3/spring-boot-configuration-processor-2.6.3-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.springframework.boot:spring-boot-starter-aop:2.6.3">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-aop/2.6.3/spring-boot-starter-aop-2.6.3.jar!/" />
@@ -1259,17 +890,6 @@
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-jdbc/2.6.3/spring-boot-starter-jdbc-2.6.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.springframework.boot:spring-boot-starter-json:2.6.3">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-json/2.6.3/spring-boot-starter-json-2.6.3.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-json/2.6.3/spring-boot-starter-json-2.6.3-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-json/2.6.3/spring-boot-starter-json-2.6.3-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.springframework.boot:spring-boot-starter-logging:2.6.3">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-logging/2.6.3/spring-boot-starter-logging-2.6.3.jar!/" />
@@ -1290,28 +910,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-test/2.6.3/spring-boot-starter-test-2.6.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.boot:spring-boot-starter-tomcat:2.6.3">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-tomcat/2.6.3/spring-boot-starter-tomcat-2.6.3.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-tomcat/2.6.3/spring-boot-starter-tomcat-2.6.3-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-tomcat/2.6.3/spring-boot-starter-tomcat-2.6.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.boot:spring-boot-starter-web:2.6.3">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-web/2.6.3/spring-boot-starter-web-2.6.3.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-web/2.6.3/spring-boot-starter-web-2.6.3-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-starter-web/2.6.3/spring-boot-starter-web-2.6.3-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.springframework.boot:spring-boot-starter:2.6.3">
@@ -1358,28 +956,6 @@
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot/2.6.3/spring-boot-2.6.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.springframework.cloud:spring-cloud-commons:3.1.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/cloud/spring-cloud-commons/3.1.1/spring-cloud-commons-3.1.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/cloud/spring-cloud-commons/3.1.1/spring-cloud-commons-3.1.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/cloud/spring-cloud-commons/3.1.1/spring-cloud-commons-3.1.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.cloud:spring-cloud-context:3.1.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/cloud/spring-cloud-context/3.1.1/spring-cloud-context-3.1.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/cloud/spring-cloud-context/3.1.1/spring-cloud-context-3.1.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/cloud/spring-cloud-context/3.1.1/spring-cloud-context-3.1.1-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.springframework.data:spring-data-commons:2.6.1">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/data/spring-data-commons/2.6.1/spring-data-commons-2.6.1.jar!/" />
@@ -1400,17 +976,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/data/spring-data-jpa/2.6.1/spring-data-jpa-2.6.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.security:spring-security-crypto:5.6.1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/security/spring-security-crypto/5.6.1/spring-security-crypto-5.6.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/security/spring-security-crypto/5.6.1/spring-security-crypto-5.6.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/security/spring-security-crypto/5.6.1/spring-security-crypto-5.6.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.springframework:spring-aop:5.3.15">
@@ -1532,28 +1097,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-tx/5.3.15/spring-tx-5.3.15-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework:spring-web:5.3.15">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-web/5.3.15/spring-web-5.3.15.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-web/5.3.15/spring-web-5.3.15-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-web/5.3.15/spring-web-5.3.15-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework:spring-webmvc:5.3.15">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-webmvc/5.3.15/spring-webmvc-5.3.15.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-webmvc/5.3.15/spring-webmvc-5.3.15-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/spring-webmvc/5.3.15/spring-webmvc-5.3.15-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.xmlunit:xmlunit-core:2.8.4">

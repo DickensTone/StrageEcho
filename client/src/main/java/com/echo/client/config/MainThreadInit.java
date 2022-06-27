@@ -1,5 +1,6 @@
 package com.echo.client.config;
 
+
 import com.echo.client.console.MainConsole;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
