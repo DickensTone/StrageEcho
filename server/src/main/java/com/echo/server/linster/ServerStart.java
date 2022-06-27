@@ -1,6 +1,5 @@
 package com.echo.server.linster;
 
-import com.echo.server.configuration.NacosConfig;
 import com.echo.server.fileserver.FileServer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

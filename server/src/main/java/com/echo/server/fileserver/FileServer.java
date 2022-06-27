@@ -15,22 +15,13 @@
  */
 package com.echo.server.fileserver;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.echo.server.encoder.EchoEncoder;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.LineBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.stream.ChunkedWriteHandler;
-import io.netty.util.CharsetUtil;
 import org.springframework.stereotype.Service;
 
 /**
@@ -39,7 +30,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public final class FileServer {
-    @NacosValue(value = "${server.port:8787}", autoRefreshed = true)
     private int port;
 
     public void setPort(int port){
