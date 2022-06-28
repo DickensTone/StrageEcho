@@ -24,8 +24,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 
-import java.nio.charset.StandardCharsets;
-
 
 @Slf4j
 public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
@@ -37,7 +35,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
     }
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx,  ByteBuf msg) {
+    public void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
         ctx.writeAndFlush(msg);
     }
 

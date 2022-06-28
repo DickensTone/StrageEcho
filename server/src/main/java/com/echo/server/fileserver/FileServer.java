@@ -22,17 +22,15 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import org.springframework.stereotype.Service;
 
 /**
  * Server that accept the path of a file an echo back its content.
  */
 
-@Service
 public final class FileServer {
-    private int port;
+    private final int port;
 
-    public void setPort(int port){
+    public FileServer(int port) {
         this.port = port;
     }
 
@@ -43,22 +41,20 @@ public final class FileServer {
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
-             .channel(NioServerSocketChannel.class)
-             .option(ChannelOption.SO_BACKLOG, 100)
-             .handler(new LoggingHandler(LogLevel.INFO))
-             .childHandler(new ChannelInitializer<SocketChannel>() {
-                 @Override
-                 public void initChannel(SocketChannel ch) {
-                     ChannelPipeline p = ch.pipeline();
-                     p.addLast(
-                             new FileServerHandler());
+                    .channel(NioServerSocketChannel.class)
+                    .option(ChannelOption.SO_BACKLOG, 100)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        public void initChannel(SocketChannel ch) {
+                            ChannelPipeline p = ch.pipeline();
+                            p.addLast(
+                                    new FileServerHandler());
 
-                 }
-             });
+                        }
+                    });
             // Start the server.
             ChannelFuture f = b.bind(port).sync();
-            System.out.println(FileServer.class.getName() +
-                    " started and listening for connections on " + f.channel().localAddress());
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();
         } finally {

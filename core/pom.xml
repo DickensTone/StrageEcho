@@ -9,7 +9,6 @@
         <version>1.0.1Alpha</version>
     </parent>
 
-
     <artifactId>core</artifactId>
 
 </project>
