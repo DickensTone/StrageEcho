@@ -28,14 +28,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("HELLO: Type the path of the file to retrieve.\n",
-                CharsetUtil.UTF_8));
-    }
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
+        msg.retain();
         ctx.writeAndFlush(msg);
     }
 
@@ -48,6 +44,12 @@ public class FileServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
                     cause.getClass().getSimpleName() + ": " +
                     cause.getMessage() + '\n').addListener(ChannelFutureListener.CLOSE);
         }
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) {
+        ctx.writeAndFlush(Unpooled.copiedBuffer("HELLO: Type the path of the file to retrieve.\n",
+                CharsetUtil.UTF_8));
     }
 }
 

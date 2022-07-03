@@ -23,6 +23,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
+import java.net.InetSocketAddress;
+
 /**
  * Server that accept the path of a file an echo back its content.
  */
@@ -52,9 +54,10 @@ public final class FileServer {
                                     new FileServerHandler());
 
                         }
-                    });
+                    })
+                    .localAddress(new InetSocketAddress(port));
             // Start the server.
-            ChannelFuture f = b.bind(port).sync();
+            ChannelFuture f = b.bind().sync();
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();
         } finally {

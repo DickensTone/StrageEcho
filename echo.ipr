@@ -18,7 +18,7 @@
         <module name="core" />
         <module name="server" />
         <module name="nacosExample" />
-        <module name="IO" />
+        <module name="mettyExample" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,27 +28,23 @@
       <module name="echo" target="18" />
       <module name="examples" target="18" />
       <module name="IO" target="18" />
+      <module name="mettyExample" target="18" />
       <module name="nacosExample" target="18" />
       <module name="server" target="18" />
     </bytecodeTargetLevel>
   </component>
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/IO/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/IO/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/configcenter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/configcenter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/examples/mettyExample/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/examples/mettyExample/src/main/java/com/echo/nettyExample/NettyEcho.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/nacosExample/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/nacosExample/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/examples/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/examples/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="ExportToHTMLSettings">
     <option name="PRINT_LINE_NUMBERS" value="false" />
@@ -75,11 +71,12 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ConfigCenter" options="-parameters" />
       <module name="IO" options="-parameters" />
-      <module name="client" options="-parameters" />
+      <module name="client" options="-parameters --add-modules java.base" />
       <module name="core" options="-parameters" />
       <module name="examples" options="" />
-      <module name="nacosExample" options="-parameters" />
-      <module name="server" options="-parameters" />
+      <module name="mettyExample" options="-parameters --add-modules java.base" />
+      <module name="nacosExample" options="-parameters --add-modules java.base" />
+      <module name="server" options="-parameters --add-modules java.base" />
     </option>
   </component>
   <component name="JavadocGenerationManager">
@@ -110,6 +107,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/IO/pom.xml" />
         <option value="$PROJECT_DIR$/configcenter/pom.xml" />
       </set>
     </option>
@@ -241,6 +239,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/echo.iml" filepath="$PROJECT_DIR$/echo.iml" />
       <module fileurl="file://$PROJECT_DIR$/examples/examples.iml" filepath="$PROJECT_DIR$/examples/examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mettyExample.iml" filepath="$PROJECT_DIR$/mettyExample.iml" />
       <module fileurl="file://$PROJECT_DIR$/examples/nacosExample/nacosExample.iml" filepath="$PROJECT_DIR$/examples/nacosExample/nacosExample.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
     </modules>
@@ -1200,6 +1199,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-autoconfigure/2.6.3/spring-boot-autoconfigure-2.6.3-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.6.3">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-configuration-processor/2.6.3/spring-boot-configuration-processor-2.6.3.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-configuration-processor/2.6.3/spring-boot-configuration-processor-2.6.3-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/../../maven/resp/org/springframework/boot/spring-boot-configuration-processor/2.6.3/spring-boot-configuration-processor-2.6.3-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.springframework.boot:spring-boot-starter-aop:2.6.3">
