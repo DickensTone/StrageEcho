@@ -2,3 +2,7 @@
 /configcenter/target/
 /server/target/
 /target/
+.idea
+*.iml
+*.class
+*.ipr
