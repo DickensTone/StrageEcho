@@ -1,8 +1,9 @@
 # Project exclude paths
 /configcenter/target/
 /server/target/
-/target/
+*/target/
 .idea
 *.iml
 *.class
 *.ipr
+*.iws

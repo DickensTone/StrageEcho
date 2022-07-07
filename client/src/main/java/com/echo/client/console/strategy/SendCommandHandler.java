@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 @Slf4j
 public class SendCommandHandler implements CommandHandler{
 
-    private final EchoClient client = new EchoClient("localhost", 8550);
+    private final EchoClient client = new EchoClient("localhost", 7001);
 
     public SendCommandHandler(){
 

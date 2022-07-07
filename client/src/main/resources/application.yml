@@ -11,4 +11,4 @@ spring:
   config:
     import:
       - optional:nacos:echo_server.yml
-      - optional:nacos:hello?group=DEFAULT_GROUP
+      - optional:nacos:hello.yml
