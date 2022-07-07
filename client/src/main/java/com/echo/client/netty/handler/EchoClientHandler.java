@@ -28,16 +28,14 @@ public class EchoClientHandler
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("Hello, This is client",
+        ctx.writeAndFlush(Unpooled.copiedBuffer(command,
                 CharsetUtil.UTF_8));
     }
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
-        pw.println(in.toString(CharsetUtil.UTF_8));
+        pw.println("received from server:" + in.toString(CharsetUtil.UTF_8));
         pw.flush();
-        ctx.writeAndFlush(Unpooled.copiedBuffer(command,
-                CharsetUtil.UTF_8));
     }
 
     @Override
